@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Profesores - Sistema de Asistencia</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📊</span>
+                    <h1>Sistema de Asistencia</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="dashboard.html">Inicio</a></li>
+                        <li><a href="asistencia.html">Asistencia</a></li>
+                        <li><a href="profesores.html" class="active">Profesores</a></li>
+                        <li><a href="calificaciones.html">Calificaciones</a></li>
+                        <li><a href="avisos.html">Avisos</a></li>
+                    </ul>
+                </nav>
+                <div class="user-info">
+                    <span id="userName">Coordinador</span>
+                    <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="dashboard">
+            <aside class="sidebar">
+                <h2>Navegación</h2>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="asistencia.html">Registrar Asistencia</a></li>
+                    <li><a href="profesores.html" class="active">Lista de Profesores</a></li>
+                    <li><a href="calificaciones.html">Calificaciones</a></li>
+                    <li><a href="avisos.html">Avisos</a></li>
+                    <li><a href="configuracion.html">Configuración</a></li>
+                </ul>
+            </aside>
+
+            <section class="content">
+                <div class="content-header">
+                    <h2>Gestión de Profesores</h2>
+                    <button class="btn" onclick="openAddProfessorModal()">Agregar Profesor</button>
+                </div>
+                
+                <div class="filters">
+                    <div class="form-group">
+                        <input type="text" id="searchProfessor" placeholder="Buscar profesor...">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="professorsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Teléfono</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Los datos se cargarán dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal para agregar/editar profesor -->
+    <div id="professorModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProfessorModal()">&times;</span>
+            <h3 id="modalTitle">Agregar Profesor</h3>
+            <form id="professorForm">
+                <div class="form-group">
+                    <label for="profName">Nombre completo</label>
+                    <input type="text" id="profName" name="profName" required>
+                </div>
+                <div class="form-group">
+                    <label for="profEmail">Email</label>
+                    <input type="email" id="profEmail" name="profEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="profPhone">Teléfono</label>
+                    <input type="tel" id="profPhone" name="profPhone">
+                </div>
+                <div class="form-group">
+                    <label for="profStatus">Estado</label>
+                    <select id="profStatus" name="profStatus">
+                        <option value="active">Activo</option>
+                        <option value="inactive">Inactivo</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeProfessorModal()">Cancelar</button>
+                    <button type="submit" class="btn">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Sistema de Control de Asistencia para Profesores &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/professors.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

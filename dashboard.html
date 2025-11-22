@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema de Asistencia</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📊</span>
+                    <h1>Sistema de Asistencia</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="dashboard.html" class="active">Inicio</a></li>
+                        <li><a href="asistencia.html">Asistencia</a></li>
+                        <li><a href="profesores.html">Profesores</a></li>
+                        <li><a href="calificaciones.html">Calificaciones</a></li>
+                        <li><a href="avisos.html">Avisos</a></li>
+                    </ul>
+                </nav>
+                <div class="user-info">
+                    <span id="userName">Coordinador</span>
+                    <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="dashboard">
+            <aside class="sidebar">
+                <h2>Navegación</h2>
+                <ul>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="asistencia.html">Registrar Asistencia</a></li>
+                    <li><a href="profesores.html">Lista de Profesores</a></li>
+                    <li><a href="calificaciones.html">Calificaciones</a></li>
+                    <li><a href="avisos.html">Avisos</a></li>
+                    <li><a href="configuracion.html">Configuración</a></li>
+                </ul>
+            </aside>
+
+            <section class="content">
+                <h2>Panel de Control</h2>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3 id="totalProfesores">45</h3>
+                        <p>Profesores Activos</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="asistenciasHoy">42</h3>
+                        <p>Asistencias Hoy</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="ausenciasHoy">3</h3>
+                        <p>Ausencias Hoy</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="porcentajeAsistencia">96%</h3>
+                        <p>Asistencia Mensual</p>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>Actividad Reciente</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <span class="activity-time">Hoy, 08:30 AM</span>
+                            <span class="activity-text">Prof. Juan Pérez registró asistencia</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">Hoy, 08:45 AM</span>
+                            <span class="activity-text">Prof. María García registró asistencia</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">Ayer, 05:20 PM</span>
+                            <span class="activity-text">Nuevo aviso publicado</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Sistema de Control de Asistencia para Profesores &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

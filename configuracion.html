@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Sistema de Asistencia</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📊</span>
+                    <h1>Sistema de Asistencia</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="dashboard.html">Inicio</a></li>
+                        <li><a href="asistencia.html">Asistencia</a></li>
+                        <li><a href="profesores.html">Profesores</a></li>
+                        <li><a href="calificaciones.html">Calificaciones</a></li>
+                        <li><a href="avisos.html">Avisos</a></li>
+                    </ul>
+                </nav>
+                <div class="user-info">
+                    <span id="userName">Coordinador</span>
+                    <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="dashboard">
+            <aside class="sidebar">
+                <h2>Navegación</h2>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="asistencia.html">Registrar Asistencia</a></li>
+                    <li><a href="profesores.html">Lista de Profesores</a></li>
+                    <li><a href="calificaciones.html">Calificaciones</a></li>
+                    <li><a href="avisos.html">Avisos</a></li>
+                    <li><a href="configuracion.html" class="active">Configuración</a></li>
+                </ul>
+            </aside>
+
+            <section class="content">
+                <h2>Configuración del Sistema</h2>
+                
+                <div class="settings-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" onclick="openTab('general')">General</button>
+                        <button class="tab-btn" onclick="openTab('users')">Usuarios</button>
+                        <button class="tab-btn" onclick="openTab('backup')">Respaldo</button>
+                    </div>
+
+                    <div id="general" class="tab-content active">
+                        <h3>Configuración General</h3>
+                        <form id="generalSettings">
+                            <div class="form-group">
+                                <label for="institutionName">Nombre de la Institución</label>
+                                <input type="text" id="institutionName" value="Institución Educativa Ejemplo">
+                            </div>
+                            <div class="form-group">
+                                <label for="workStart">Hora de inicio de labores</label>
+                                <input type="time" id="workStart" value="08:00">
+                            </div>
+                            <div class="form-group">
+                                <label for="workEnd">Hora de fin de labores</label>
+                                <input type="time" id="workEnd" value="17:00">
+                            </div>
+                            <div class="form-group">
+                                <label for="toleranceMinutes">Tolerancia de tardanza (minutos)</label>
+                                <input type="number" id="toleranceMinutes" value="15" min="0">
+                            </div>
+                            <button type="submit" class="btn">Guardar Configuración</button>
+                        </form>
+                    </div>
+
+                    <div id="users" class="tab-content">
+                        <h3>Gestión de Usuarios</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Usuario</th>
+                                        <th>Tipo</th>
+                                        <th>Último acceso</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>admin</td>
+                                        <td>Coordinador</td>
+                                        <td>17/11/2025 08:30</td>
+                                        <td class="status-present">Activo</td>
+                                        <td>
+                                            <button class="btn btn-small">Editar</button>
+                                            <button class="btn btn-small btn-secondary">Resetear</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="backup" class="tab-content">
+                        <h3>Respaldo de Datos</h3>
+                        <div class="backup-actions">
+                            <button class="btn" onclick="createBackup()">Crear Respaldo</button>
+                            <button class="btn btn-secondary">Restaurar desde Archivo</button>
+                        </div>
+                        <div class="backup-list">
+                            <h4>Respaldos Recientes</h4>
+                            <ul>
+                                <li>respaldo_20251117.zip - 17/11/2025 08:00</li>
+                                <li>respaldo_20251116.zip - 16/11/2025 08:00</li>
+                                <li>respaldo_20251115.zip - 15/11/2025 08:00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Sistema de Control de Asistencia para Profesores &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

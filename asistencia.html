@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Asistencia - Sistema de Asistencia</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📊</span>
+                    <h1>Sistema de Asistencia</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="dashboard.html">Inicio</a></li>
+                        <li><a href="asistencia.html" class="active">Asistencia</a></li>
+                        <li><a href="profesores.html">Profesores</a></li>
+                        <li><a href="calificaciones.html">Calificaciones</a></li>
+                        <li><a href="avisos.html">Avisos</a></li>
+                    </ul>
+                </nav>
+                <div class="user-info">
+                    <span id="userName">Coordinador</span>
+                    <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="dashboard">
+            <aside class="sidebar">
+                <h2>Navegación</h2>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="asistencia.html" class="active">Registrar Asistencia</a></li>
+                    <li><a href="profesores.html">Lista de Profesores</a></li>
+                    <li><a href="calificaciones.html">Calificaciones</a></li>
+                    <li><a href="avisos.html">Avisos</a></li>
+                    <li><a href="configuracion.html">Configuración</a></li>
+                </ul>
+            </aside>
+
+            <section class="content">
+                <h2>Registrar Asistencia</h2>
+                
+                <div class="attendance-form">
+                    <form id="attendanceForm" action="php/registrar_asistencia.php" method="POST">
+                        <div class="form-group">
+                            <label for="professor">Seleccionar Profesor</label>
+                            <select id="professor" name="professor" required>
+                                <option value="">-- Seleccione un profesor --</option>
+                                <option value="1">Prof. Juan Pérez</option>
+                                <option value="2">Prof. María García</option>
+                                <option value="3">Prof. Carlos López</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Fecha</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Hora</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Estado</label>
+                            <select id="status" name="status" required>
+                                <option value="present">Presente</option>
+                                <option value="absent">Ausente</option>
+                                <option value="late">Tardanza</option>
+                                <option value="permission">Permiso</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="observations">Observaciones</label>
+                            <textarea id="observations" name="observations" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Registrar Asistencia</button>
+                    </form>
+                </div>
+
+                <h3>Asistencia Reciente</h3>
+                <div class="table-container">
+                    <table id="attendanceTable">
+                        <thead>
+                            <tr>
+                                <th>Profesor</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Estado</th>
+                                <th>Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Los datos se cargarán dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Sistema de Control de Asistencia para Profesores &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

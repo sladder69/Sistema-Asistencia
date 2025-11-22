@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avisos - Sistema de Asistencia</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📊</span>
+                    <h1>Sistema de Asistencia</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="dashboard.html">Inicio</a></li>
+                        <li><a href="asistencia.html">Asistencia</a></li>
+                        <li><a href="profesores.html">Profesores</a></li>
+                        <li><a href="calificaciones.html">Calificaciones</a></li>
+                        <li><a href="avisos.html" class="active">Avisos</a></li>
+                    </ul>
+                </nav>
+                <div class="user-info">
+                    <span id="userName">Coordinador</span>
+                    <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="dashboard">
+            <aside class="sidebar">
+                <h2>Navegación</h2>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="asistencia.html">Registrar Asistencia</a></li>
+                    <li><a href="profesores.html">Lista de Profesores</a></li>
+                    <li><a href="calificaciones.html">Calificaciones</a></li>
+                    <li><a href="avisos.html" class="active">Avisos</a></li>
+                    <li><a href="configuracion.html">Configuración</a></li>
+                </ul>
+            </aside>
+
+            <section class="content">
+                <div class="content-header">
+                    <h2>Gestión de Avisos</h2>
+                    <button class="btn" onclick="openAddNoticeModal()">Nuevo Aviso</button>
+                </div>
+
+                <div class="notices-container">
+                    <div class="notice-card">
+                        <div class="notice-header">
+                            <h3>Reunión de Profesores - Noviembre</h3>
+                            <span class="notice-date">15/11/2025</span>
+                        </div>
+                        <div class="notice-content">
+                            <p>Se convoca a todos los profesores a la reunión mensual que se llevará a cabo el próximo viernes 21 de noviembre en la sala de conferencias.</p>
+                        </div>
+                        <div class="notice-actions">
+                            <button class="btn btn-small">Editar</button>
+                            <button class="btn btn-small btn-secondary">Eliminar</button>
+                        </div>
+                    </div>
+
+                    <div class="notice-card">
+                        <div class="notice-header">
+                            <h3>Actualización del Sistema</h3>
+                            <span class="notice-date">10/11/2025</span>
+                        </div>
+                        <div class="notice-content">
+                            <p>El próximo fin de semana se realizará una actualización del sistema. El servicio podría no estar disponible el domingo de 2:00 AM a 6:00 AM.</p>
+                        </div>
+                        <div class="notice-actions">
+                            <button class="btn btn-small">Editar</button>
+                            <button class="btn btn-small btn-secondary">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal para agregar/editar avisos -->
+    <div id="noticeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeNoticeModal()">&times;</span>
+            <h3 id="modalNoticeTitle">Nuevo Aviso</h3>
+            <form id="noticeForm">
+                <div class="form-group">
+                    <label for="noticeTitle">Título</label>
+                    <input type="text" id="noticeTitle" name="noticeTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="noticeContent">Contenido</label>
+                    <textarea id="noticeContent" name="noticeContent" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="noticePriority">Prioridad</label>
+                    <select id="noticePriority" name="noticePriority">
+                        <option value="normal">Normal</option>
+                        <option value="high">Alta</option>
+                        <option value="urgent">Urgente</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeNoticeModal()">Cancelar</button>
+                    <button type="submit" class="btn">Publicar Aviso</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Sistema de Control de Asistencia para Profesores &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/notices.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

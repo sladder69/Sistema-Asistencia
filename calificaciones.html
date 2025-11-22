@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificaciones - Sistema de Asistencia</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📊</span>
+                    <h1>Sistema de Asistencia</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="dashboard.html">Inicio</a></li>
+                        <li><a href="asistencia.html">Asistencia</a></li>
+                        <li><a href="profesores.html">Profesores</a></li>
+                        <li><a href="calificaciones.html" class="active">Calificaciones</a></li>
+                        <li><a href="avisos.html">Avisos</a></li>
+                    </ul>
+                </nav>
+                <div class="user-info">
+                    <span id="userName">Coordinador</span>
+                    <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="dashboard">
+            <aside class="sidebar">
+                <h2>Navegación</h2>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="asistencia.html">Registrar Asistencia</a></li>
+                    <li><a href="profesores.html">Lista de Profesores</a></li>
+                    <li><a href="calificaciones.html" class="active">Calificaciones</a></li>
+                    <li><a href="avisos.html">Avisos</a></li>
+                    <li><a href="configuracion.html">Configuración</a></li>
+                </ul>
+            </aside>
+
+            <section class="content">
+                <h2>Gestor de Calificaciones</h2>
+                
+                <div class="grades-controls">
+                    <div class="form-group">
+                        <label for="selectProfessor">Seleccionar Profesor</label>
+                        <select id="selectProfessor">
+                            <option value="">-- Todos los profesores --</option>
+                            <option value="1">Prof. Juan Pérez</option>
+                            <option value="2">Prof. María García</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="selectPeriod">Periodo</label>
+                        <select id="selectPeriod">
+                            <option value="2025-1">2025-1</option>
+                            <option value="2025-2">2025-2</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="loadGrades()">Cargar Calificaciones</button>
+                </div>
+
+                <div class="table-container">
+                    <table id="gradesTable">
+                        <thead>
+                            <tr>
+                                <th>Profesor</th>
+                                <th>Asignatura</th>
+                                <th>Estudiantes</th>
+                                <th>Calificación Promedio</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Los datos se cargarán dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grades-actions">
+                    <button class="btn" onclick="exportGrades()">Exportar a Excel</button>
+                    <button class="btn btn-secondary" onclick="generateReport()">Generar Reporte</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Sistema de Control de Asistencia para Profesores &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/grades.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
