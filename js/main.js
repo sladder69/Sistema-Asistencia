@@ -243,3 +243,38 @@ if (attendanceForm) {
                                                now.getMinutes().toString().padStart(2, '0');
     });
 }
+
+// Funcionalidad del menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileNav = document.getElementById('mobileNav');
+    
+    if (menuToggle && mobileNav) {
+        menuToggle.addEventListener('click', function() {
+            mobileNav.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenu.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        const mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+    
+    // Actualizar nombre de usuario en navegación móvil
+    const userName = document.getElementById('userName');
+    const mobileUserName = document.getElementById('mobileUserName');
+    if (userName && mobileUserName) {
+        mobileUserName.textContent = userName.textContent;
+    }
+});

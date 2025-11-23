@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avisos - Sistema de Asistencia</title>
+    <title>Avisos - ConectaTec</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -12,21 +12,56 @@
             <div class="header-content">
                 <div class="logo">
                     <span class="logo-icon">📊</span>
-                    <h1>Sistema de Asistencia</h1>
+                    <h1>ConectaTec</h1>
                 </div>
+                
+                <!-- Botón del menú hamburguesa (solo visible en móviles) -->
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
                 <nav>
                     <ul>
                         <li><a href="dashboard.html">Inicio</a></li>
                         <li><a href="asistencia.html">Asistencia</a></li>
                         <li><a href="profesores.html">Profesores</a></li>
                         <li><a href="calificaciones.html">Calificaciones</a></li>
-                        <li><a href="avisos.html" class="active">Avisos</a></li>
+                        <li><a href="avisos.html">Avisos</a></li>
                     </ul>
                 </nav>
                 <div class="user-info">
                     <span id="userName">Coordinador</span>
                     <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Navegación móvil -->
+        <div class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-header">
+                <div class="logo">
+                    <span class="logo-icon">📊</span>
+                    <h1>Sistema de Asistencia</h1>
+                </div>
+                <button class="menu-toggle active" id="closeMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul>
+                <li><a href="dashboard.html">Inicio</a></li>
+                <li><a href="asistencia.html">Asistencia</a></li>
+                <li><a href="profesores.html">Profesores</a></li>
+                <li><a href="calificaciones.html">Calificaciones</a></li>
+                <li><a href="avisos.html">Avisos</a></li>
+                <li><a href="configuracion.html">Configuración</a></li>
+            </ul>
+            <div class="mobile-user-info">
+                <span id="mobileUserName">Coordinador</span>
+                <a href="index.html" class="btn btn-secondary" onclick="logout()" style="margin-top: 15px;">Cerrar Sesión</a>
             </div>
         </div>
     </header>
@@ -116,7 +151,7 @@
 
     <footer>
         <div class="container">
-            <p>Sistema de Control de Asistencia para Profesores &copy; 2025</p>
+            <p>Sistema de Control de Asistencia para Profesores - ConectaTec &copy; 2025</p>
         </div>
     </footer>
 
