@@ -1,0 +1,26 @@
+[
+    {
+        "identificacion": 1,
+        "nombre": "Matemáticas I",
+        "codigo": "MAT-101",
+        "descripcion": "Introducción al álgebra y fundamentos matemáticos.",
+        "creditos": 5,
+        "activa": true
+    },
+    {
+        "identificacion": 2,
+        "nombre": "Programación Básica",
+        "codigo": "PROG-110",
+        "descripcion": "Fundamentos de programación estructurada en Python.",
+        "creditos": 4,
+        "activa": true
+    },
+    {
+        "identificacion": 3,
+        "nombre": "Historia Universal",
+        "codigo": "HIS-090",
+        "descripcion": "Panorama histórico desde la antigüedad hasta la actualidad.",
+        "creditos": 3,
+        "activa": false
+    }
+]

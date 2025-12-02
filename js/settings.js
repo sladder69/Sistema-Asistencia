@@ -46,7 +46,7 @@ function saveGeneralSettings() {
 }
 
 function createBackup() {
-    // Simular creación de respaldo
+    // Simular creación de respaldo2323
     alert('Creando respaldo de la base de datos...');
     // En un sistema real, aquí se llamaría a un servicio PHP para crear el respaldo
 }

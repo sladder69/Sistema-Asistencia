@@ -1,76 +1,159 @@
+<!-- Declaración del tipo de documento HTML5 -->
 <!DOCTYPE html>
+<!-- Elemento raíz del documento con idioma español -->
 <html lang="es">
+
+<!-- Sección HEAD: Metadatos y configuraciones -->
 <head>
+    <!-- Codificación de caracteres UTF-8 para soportar caracteres especiales -->
     <meta charset="UTF-8">
+    <!-- Configuración viewport para responsive design en dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Gestión de Profesores - ConectaTec</title>
+    <!-- Enlace a la hoja de estilos CSS principal -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
+<!-- Sección BODY: Contenido visible de la página -->
 <body>
+    <!-- Cabecera principal de la aplicación -->
     <header>
+        <!-- Contenedor para centrar el contenido -->
         <div class="container">
+            <!-- Contenido de la cabecera organizado en fila -->
             <div class="header-content">
+                
+                <!-- Logo y marca del sistema -->
                 <div class="logo">
+                    <!-- Icono representativo del sistema -->
                     <span class="logo-icon">📊</span>
+                    <!-- Nombre del sistema -->
                     <h1>ConectaTec</h1>
                 </div>
+
+                <!-- Navegación principal superior -->
                 <nav>
+                    <!-- Lista de enlaces de navegación -->
                     <ul>
+                        <!-- Enlace hacia el dashboard -->
                         <li><a href="dashboard.html">Inicio</a></li>
+                        <!-- Enlace hacia módulo de asistencia -->
                         <li><a href="asistencia.html">Asistencia</a></li>
+                        <!-- Enlace activo hacia gestión de profesores -->
                         <li><a href="profesores.html" class="active">Profesores</a></li>
+                        <!-- Enlace hacia creación de materias -->
+                        <li><a href="materia.html">Materia</a></li>
+                        <!-- Enlace hacia creación de grupos -->
+                        <li><a href="grupos.html">Grupos</a></li>
+                        <!-- Enlace hacia módulo de calificaciones -->
                         <li><a href="calificaciones.html">Calificaciones</a></li>
+                        <!-- Enlace hacia sistema de avisos -->
                         <li><a href="avisos.html">Avisos</a></li>
                     </ul>
                 </nav>
+
+                <!-- Información del usuario y controles de sesión -->
                 <div class="user-info">
+                    <!-- Nombre del usuario actual (se actualiza dinámicamente) -->
                     <span id="userName">Coordinador</span>
+                    <!-- 
+                        Botón para cerrar sesión
+                        onclick="logout()" - Función JavaScript que maneja el cierre de sesión
+                    -->
                     <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Contenido principal de la página -->
     <main class="container">
+        <!-- Contenedor principal del dashboard -->
         <div class="dashboard">
+            
+            <!-- Barra lateral de navegación -->
             <aside class="sidebar">
+                <!-- Título de la sección de navegación -->
                 <h2>Navegación</h2>
+                <!-- Lista de enlaces del menú lateral -->
                 <ul>
+                    <!-- Enlace al dashboard -->
                     <li><a href="dashboard.html">Dashboard</a></li>
+                    <!-- Enlace para registrar asistencia de profesores -->
                     <li><a href="asistencia.html">Registrar Asistencia</a></li>
+                    <!-- Enlace activo para ver lista completa de profesores -->
                     <li><a href="profesores.html" class="active">Lista de Profesores</a></li>
+                    <!-- Enlace hacia creación de materias -->
+                    <li><a href="materia.html">Materia</a></li>
+                    <!-- Enlace hacia creación de grupos -->
+                    <li><a href="grupos.html">Grupos</a></li>
+                    <!-- Enlace al módulo de calificaciones -->
                     <li><a href="calificaciones.html">Calificaciones</a></li>
+                    <!-- Enlace al sistema de avisos y notificaciones -->
                     <li><a href="avisos.html">Avisos</a></li>
+                    <!-- Enlace a configuración del sistema -->
                     <li><a href="configuracion.html">Configuración</a></li>
                 </ul>
             </aside>
 
+            <!-- Sección de contenido principal -->
             <section class="content">
+                <!-- Cabecera del contenido con título y botón de acción -->
                 <div class="content-header">
+                    <!-- Título principal del módulo de profesores -->
                     <h2>Gestión de Profesores</h2>
+                    <!-- 
+                        Botón para abrir modal de nuevo profesor
+                        onclick="openAddProfessorModal()" - Función JavaScript que muestra el modal
+                    -->
                     <button class="btn" onclick="openAddProfessorModal()">Agregar Profesor</button>
                 </div>
                 
+                <!-- Sección de filtros y búsqueda -->
                 <div class="filters">
+                    <!-- Grupo de formulario para búsqueda -->
                     <div class="form-group">
+                        <!-- 
+                            Campo de búsqueda para filtrar profesores
+                            id="searchProfessor" - Identificador para manipulación JS
+                            placeholder="Buscar profesor..." - Texto guía para el usuario
+                            type="text" - Campo de texto estándar
+                        -->
                         <input type="text" id="searchProfessor" placeholder="Buscar profesor...">
                     </div>
                 </div>
 
+                <!-- Contenedor para la tabla de profesores -->
                 <div class="table-container">
+                    <!-- 
+                        Tabla principal de profesores
+                        id="professorsTable" - Identificador para manipulación y actualización dinámica
+                    -->
                     <table id="professorsTable">
+                        <!-- Encabezados de la tabla -->
                         <thead>
                             <tr>
+                                <!-- Columna: Identificador único del profesor -->
                                 <th>ID</th>
+                                <!-- Columna: Nombre completo del profesor -->
                                 <th>Nombre</th>
+                                <!-- Columna: Correo electrónico de contacto -->
                                 <th>Email</th>
+                                <!-- Columna: Número telefónico -->
                                 <th>Teléfono</th>
+                                <!-- Columna: Estado laboral (Activo/Inactivo) -->
                                 <th>Estado</th>
+                                <!-- Columna: Acciones disponibles para cada profesor -->
                                 <th>Acciones</th>
                             </tr>
                         </thead>
+                        <!-- 
+                            Cuerpo de la tabla - inicialmente vacío
+                            Se llenará dinámicamente con JavaScript al cargar la página
+                        -->
                         <tbody>
-                            <!-- Los datos se cargarán dinámicamente -->
+                            <!-- Los datos se cargarán dinámicamente desde la base de datos -->
                         </tbody>
                     </table>
                 </div>
@@ -78,47 +161,102 @@
         </div>
     </main>
 
-    <!-- Modal para agregar/editar profesor -->
+    <!-- 
+        =============================================
+        MODAL PARA AGREGAR/EDITAR PROFESOR
+        =============================================
+    -->
     <div id="professorModal" class="modal">
+        <!-- Contenido del modal -->
         <div class="modal-content">
+            <!-- 
+                Botón de cierre del modal (X)
+                onclick="closeProfessorModal()" - Función para cerrar el modal
+            -->
             <span class="close" onclick="closeProfessorModal()">&times;</span>
+            <!-- Título dinámico del modal (cambia entre Agregar/Editar) -->
             <h3 id="modalTitle">Agregar Profesor</h3>
+            <!-- Formulario para crear/editar profesores -->
             <form id="professorForm">
+                <!-- Grupo: Nombre completo del profesor -->
                 <div class="form-group">
                     <label for="profName">Nombre completo</label>
+                    <!-- 
+                        Campo de texto para el nombre (obligatorio)
+                        required - Validación HTML5 para campo obligatorio
+                    -->
                     <input type="text" id="profName" name="profName" required>
                 </div>
+                <!-- Grupo: Correo electrónico -->
                 <div class="form-group">
                     <label for="profEmail">Email</label>
+                    <!-- 
+                        Campo de email con validación nativa
+                        type="email" - Valida formato de correo electrónico
+                        required - Campo obligatorio
+                    -->
                     <input type="email" id="profEmail" name="profEmail" required>
                 </div>
+                <!-- Grupo: Número telefónico -->
                 <div class="form-group">
                     <label for="profPhone">Teléfono</label>
+                    <!-- 
+                        Campo para número telefónico
+                        type="tel" - Optimizado para entrada de teléfonos
+                        Campo opcional (sin atributo required)
+                    -->
                     <input type="tel" id="profPhone" name="profPhone">
                 </div>
+                <!-- Grupo: Estado del profesor -->
                 <div class="form-group">
                     <label for="profStatus">Estado</label>
+                    <!-- Selector de estado laboral -->
                     <select id="profStatus" name="profStatus">
+                        <!-- Opción: Profesor activo en el sistema -->
                         <option value="active">Activo</option>
+                        <!-- Opción: Profesor inactivo (no recibe asignaciones) -->
                         <option value="inactive">Inactivo</option>
                     </select>
                 </div>
+                <!-- Botones de acción del formulario -->
                 <div class="form-actions">
+                    <!-- Botón para cancelar y cerrar el modal -->
                     <button type="button" class="btn btn-secondary" onclick="closeProfessorModal()">Cancelar</button>
+                    <!-- Botón para enviar el formulario y guardar los datos -->
                     <button type="submit" class="btn">Guardar</button>
                 </div>
             </form>
         </div>
     </div>
 
+    <!-- Pie de página del sistema -->
     <footer>
         <div class="container">
+            <!-- Texto de copyright y información del sistema -->
             <p>Sistema de Control de Asistencia para Profesores - ConectaTec &copy; 2025</p>
         </div>
     </footer>
 
+    <!-- 
+        Script principal de la aplicación
+        Contiene funcionalidades generales del sistema
+    -->
     <script src="js/main.js"></script>
+    
+    <!-- 
+        Script específico para el módulo de profesores
+        Contiene las funciones:
+        - openAddProfessorModal() - Abre modal de nuevo profesor
+        - closeProfessorModal() - Cierra el modal
+        - Manejo del formulario de profesores
+        - Búsqueda y filtrado de profesores
+    -->
     <script src="js/professors.js"></script>
+    
+    <!-- 
+        Script de autenticación y manejo de sesiones
+        Incluye la función logout() para cierre de sesión
+    -->
     <script src="js/auth.js"></script>
 </body>
 </html>

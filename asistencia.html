@@ -1,103 +1,229 @@
+<!-- Declaración del tipo de documento HTML5 -->
 <!DOCTYPE html>
+<!-- Elemento raíz del documento con idioma español -->
 <html lang="es">
+
+<!-- Sección HEAD: Metadatos y configuraciones -->
 <head>
+    <!-- Codificación de caracteres UTF-8 para soportar caracteres especiales -->
     <meta charset="UTF-8">
+    <!-- Configuración viewport para responsive design en dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Registrar Asistencia - ConectaTec</title>
+    <!-- Enlace a la hoja de estilos CSS principal -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
+<!-- Sección BODY: Contenido visible de la página -->
 <body>
+    <!-- Cabecera principal de la aplicación -->
     <header>
+        <!-- Contenedor para centrar el contenido -->
         <div class="container">
+            <!-- Contenido de la cabecera organizado en fila -->
             <div class="header-content">
+                
+                <!-- Logo y marca del sistema -->
                 <div class="logo">
+                    <!-- Icono representativo del sistema -->
                     <span class="logo-icon">📊</span>
+                    <!-- Nombre del sistema -->
                     <h1>ConectaTec</h1>
                 </div>
+
+                <!-- Navegación principal superior -->
                 <nav>
+                    <!-- Lista de enlaces de navegación -->
                     <ul>
+                        <!-- Enlace hacia el dashboard -->
                         <li><a href="dashboard.html">Inicio</a></li>
+                        <!-- Enlace activo hacia módulo de asistencia -->
                         <li><a href="asistencia.html" class="active">Asistencia</a></li>
+                        <!-- Enlace hacia gestión de profesores -->
                         <li><a href="profesores.html">Profesores</a></li>
+                        <!-- Enlace hacia creación de materias -->
+                        <li><a href="materia.html">Materia</a></li>
+                        <!-- Enlace hacia creación de grupos -->
+                        <li><a href="grupos.html">Grupos</a></li>
+                        <!-- Enlace hacia módulo de calificaciones -->
                         <li><a href="calificaciones.html">Calificaciones</a></li>
+                        <!-- Enlace hacia sistema de avisos -->
                         <li><a href="avisos.html">Avisos</a></li>
                     </ul>
                 </nav>
+
+                <!-- Información del usuario y controles de sesión -->
                 <div class="user-info">
+                    <!-- Nombre del usuario actual (se actualiza dinámicamente) -->
                     <span id="userName">Coordinador</span>
+                    <!-- 
+                        Botón para cerrar sesión
+                        onclick="logout()" - Función JavaScript que maneja el cierre de sesión
+                    -->
                     <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Contenido principal de la página -->
     <main class="container">
+        <!-- Contenedor principal del dashboard -->
         <div class="dashboard">
+            
+            <!-- Barra lateral de navegación -->
             <aside class="sidebar">
+                <!-- Título de la sección de navegación -->
                 <h2>Navegación</h2>
+                <!-- Lista de enlaces del menú lateral -->
                 <ul>
+                    <!-- Enlace al dashboard -->
                     <li><a href="dashboard.html">Dashboard</a></li>
+                    <!-- Enlace activo para registrar asistencia de profesores -->
                     <li><a href="asistencia.html" class="active">Registrar Asistencia</a></li>
+                    <!-- Enlace para ver lista completa de profesores -->
                     <li><a href="profesores.html">Lista de Profesores</a></li>
+                    <!-- Enlace hacia creación de materias -->
+                    <li><a href="materia.html">Materia</a></li>
+                    <!-- Enlace hacia creación de grupos -->
+                    <li><a href="grupos.html">Grupos</a></li>
+                    <!-- Enlace al módulo de calificaciones -->
                     <li><a href="calificaciones.html">Calificaciones</a></li>
+                    <!-- Enlace al sistema de avisos y notificaciones -->
                     <li><a href="avisos.html">Avisos</a></li>
+                    <!-- Enlace a configuración del sistema -->
                     <li><a href="configuracion.html">Configuración</a></li>
                 </ul>
             </aside>
 
+            <!-- Sección de contenido principal -->
             <section class="content">
+                <!-- Título principal del módulo de asistencia -->
                 <h2>Registrar Asistencia</h2>
                 
+                <!-- Contenedor del formulario de registro de asistencia -->
                 <div class="attendance-form">
+                    <!-- 
+                        Formulario principal para registrar asistencia
+                        id="attendanceForm" - Identificador para manipulación JS
+                        action="php/registrar_asistencia.php" - Endpoint que procesa el registro
+                        method="POST" - Método seguro para envío de datos
+                    -->
                     <form id="attendanceForm" action="php/registrar_asistencia.php" method="POST">
+                        
+                        <!-- Grupo: Selección de profesor -->
                         <div class="form-group">
+                            <!-- Etiqueta para el selector de profesores -->
                             <label for="professor">Seleccionar Profesor</label>
+                            <!-- 
+                                Selector desplegable para elegir profesor
+                                required - Campo obligatorio
+                                name="professor" - Identificador para procesamiento backend
+                            -->
                             <select id="professor" name="professor" required>
+                                <!-- Opción por defecto con valor vacío -->
                                 <option value="">-- Seleccione un profesor --</option>
+                                <!-- Opciones de profesores disponibles -->
                                 <option value="1">Prof. Juan Pérez</option>
                                 <option value="2">Prof. María García</option>
                                 <option value="3">Prof. Carlos López</option>
+                                <!-- Nota: Más profesores se cargarían dinámicamente desde BD -->
                             </select>
                         </div>
+                        
+                        <!-- Grupo: Fecha de asistencia -->
                         <div class="form-group">
+                            <!-- Etiqueta para el campo de fecha -->
                             <label for="date">Fecha</label>
+                            <!-- 
+                                Campo de fecha para seleccionar día de asistencia
+                                type="date" - Input nativo para selección de fecha
+                                required - Campo obligatorio
+                            -->
                             <input type="date" id="date" name="date" required>
                         </div>
+                        
+                        <!-- Grupo: Hora de registro -->
                         <div class="form-group">
+                            <!-- Etiqueta para el campo de hora -->
                             <label for="time">Hora</label>
+                            <!-- 
+                                Campo de tiempo para registrar hora específica
+                                type="time" - Input nativo para selección de hora
+                                required - Campo obligatorio
+                            -->
                             <input type="time" id="time" name="time" required>
                         </div>
+                        
+                        <!-- Grupo: Estado de asistencia -->
                         <div class="form-group">
+                            <!-- Etiqueta para el selector de estado -->
                             <label for="status">Estado</label>
+                            <!-- 
+                                Selector desplegable para estado de asistencia
+                                required - Campo obligatorio
+                            -->
                             <select id="status" name="status" required>
+                                <!-- Opción: Presente (asistió normalmente) -->
                                 <option value="present">Presente</option>
+                                <!-- Opción: Ausente (no asistió) -->
                                 <option value="absent">Ausente</option>
+                                <!-- Opción: Tardanza (llegó después de la hora establecida) -->
                                 <option value="late">Tardanza</option>
+                                <!-- Opción: Permiso (ausencia justificada) -->
                                 <option value="permission">Permiso</option>
                             </select>
                         </div>
+                        
+                        <!-- Grupo: Observaciones adicionales -->
                         <div class="form-group">
+                            <!-- Etiqueta para el campo de observaciones -->
                             <label for="observations">Observaciones</label>
+                            <!-- 
+                                Área de texto para comentarios adicionales
+                                rows="3" - Altura inicial del textarea
+                                Campo opcional (sin atributo required)
+                            -->
                             <textarea id="observations" name="observations" rows="3"></textarea>
                         </div>
+                        
+                        <!-- Botón para enviar el formulario y registrar asistencia -->
                         <button type="submit" class="btn">Registrar Asistencia</button>
                     </form>
                 </div>
 
+                <!-- Subtítulo para la sección de historial -->
                 <h3>Asistencia Reciente</h3>
+                
+                <!-- Contenedor para la tabla de asistencia reciente -->
                 <div class="table-container">
+                    <!-- 
+                        Tabla para mostrar registros recientes de asistencia
+                        id="attendanceTable" - Identificador para actualización dinámica
+                    -->
                     <table id="attendanceTable">
+                        <!-- Encabezados de la tabla -->
                         <thead>
                             <tr>
+                                <!-- Columna: Nombre del profesor -->
                                 <th>Profesor</th>
+                                <!-- Columna: Fecha del registro -->
                                 <th>Fecha</th>
+                                <!-- Columna: Hora del registro -->
                                 <th>Hora</th>
+                                <!-- Columna: Estado de asistencia -->
                                 <th>Estado</th>
+                                <!-- Columna: Observaciones adicionales -->
                                 <th>Observaciones</th>
                             </tr>
                         </thead>
+                        <!-- 
+                            Cuerpo de la tabla - inicialmente vacío
+                            Se llenará dinámicamente con JavaScript al cargar la página
+                        -->
                         <tbody>
-                            <!-- Los datos se cargarán dinámicamente -->
+                            <!-- Los datos se cargarán dinámicamente desde la base de datos -->
                         </tbody>
                     </table>
                 </div>
@@ -105,13 +231,24 @@
         </div>
     </main>
 
+    <!-- Pie de página del sistema -->
     <footer>
         <div class="container">
+            <!-- Texto de copyright y información del sistema -->
             <p>Sistema de Control de Asistencia para Profesores - ConectaTec &copy; 2025</p>
         </div>
     </footer>
 
+    <!-- 
+        Script principal de la aplicación
+        Contiene funcionalidades generales del sistema
+    -->
     <script src="js/main.js"></script>
+    
+    <!-- 
+        Script de autenticación y manejo de sesiones
+        Incluye la función logout() para cierre de sesión
+    -->
     <script src="js/auth.js"></script>
 </body>
 </html>

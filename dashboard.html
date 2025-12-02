@@ -1,85 +1,171 @@
+<!-- Declaración del tipo de documento HTML5 -->
 <!DOCTYPE html>
+<!-- Elemento raíz del documento con idioma español -->
 <html lang="es">
+
+<!-- Sección HEAD: Metadatos y configuraciones -->
 <head>
+    <!-- Codificación de caracteres UTF-8 para soportar caracteres especiales -->
     <meta charset="UTF-8">
+    <!-- Configuración viewport para responsive design en dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Dashboard - ConectaTec</title>
+    <!-- Enlace a la hoja de estilos CSS principal -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
+<!-- Sección BODY: Contenido visible de la página -->
 <body>
+    <!-- Cabecera principal de la aplicación -->
     <header>
+        <!-- Contenedor para centrar el contenido -->
         <div class="container">
+            <!-- Contenido de la cabecera organizado en fila -->
             <div class="header-content">
+                
+                <!-- Logo y marca del sistema -->
                 <div class="logo">
+                    <!-- Icono representativo del sistema -->
                     <span class="logo-icon">📊</span>
+                    <!-- Nombre del sistema -->
                     <h1>ConectaTec</h1>
                 </div>
+
+                <!-- Navegación principal superior -->
                 <nav>
+                    <!-- Lista de enlaces de navegación -->
                     <ul>
+                        <!-- Enlace activo hacia el dashboard -->
                         <li><a href="dashboard.html" class="active">Inicio</a></li>
+                        <!-- Enlace hacia módulo de asistencia -->
                         <li><a href="asistencia.html">Asistencia</a></li>
+                        <!-- Enlace hacia gestión de profesores -->
                         <li><a href="profesores.html">Profesores</a></li>
+                        <!-- Enlace hacia creación de materias -->
+                        <li><a href="materia.html">Materia</a></li>
+                        <!-- Enlace hacia creación de grupos -->
+                        <li><a href="grupos.html">Grupos</a></li>
+                        <!-- Enlace hacia módulo de calificaciones -->
                         <li><a href="calificaciones.html">Calificaciones</a></li>
+                        <!-- Enlace hacia sistema de avisos -->
                         <li><a href="avisos.html">Avisos</a></li>
                     </ul>
                 </nav>
+
+                <!-- Información del usuario y controles de sesión -->
                 <div class="user-info">
+                    <!-- Nombre del usuario actual (se actualiza dinámicamente) -->
                     <span id="userName">Coordinador</span>
+                    <!-- 
+                        Botón para cerrar sesión
+                        onclick="logout()" - Función JavaScript que maneja el cierre de sesión
+                        href="index.html" - Redirige a la página de login después de cerrar sesión
+                    -->
                     <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Contenido principal de la página -->
     <main class="container">
+        <!-- Contenedor principal del dashboard -->
         <div class="dashboard">
+            
+            <!-- Barra lateral de navegación -->
             <aside class="sidebar">
+                <!-- Título de la sección de navegación -->
                 <h2>Navegación</h2>
+                <!-- Lista de enlaces del menú lateral -->
                 <ul>
+                    <!-- Enlace activo al dashboard -->
                     <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <!-- Enlace para registrar asistencia de profesores -->
                     <li><a href="asistencia.html">Registrar Asistencia</a></li>
+                    <!-- Enlace para ver lista completa de profesores -->
                     <li><a href="profesores.html">Lista de Profesores</a></li>
+                    <!-- Enlace hacia creación de materias -->
+                    <li><a href="materia.html">Materia</a></li>
+                    <!-- Enlace hacia creación de grupos -->
+                    <li><a href="grupos.html">Grupos</a></li>
+                    <!-- Enlace al módulo de calificaciones -->
                     <li><a href="calificaciones.html">Calificaciones</a></li>
+                    <!-- Enlace al sistema de avisos y notificaciones -->
                     <li><a href="avisos.html">Avisos</a></li>
+                    <!-- Enlace a configuración del sistema -->
                     <li><a href="configuracion.html">Configuración</a></li>
                 </ul>
             </aside>
 
+            <!-- Sección de contenido principal -->
             <section class="content">
+                <!-- Título principal del panel de control -->
                 <h2>Panel de Control</h2>
                 
+                <!-- Contenedor de tarjetas de estadísticas -->
                 <div class="stats">
+                    <!-- Tarjeta 1: Profesores activos -->
                     <div class="stat-card">
+                        <!-- Número dinámico de profesores activos -->
                         <h3 id="totalProfesores">45</h3>
+                        <!-- Descripción de la métrica -->
                         <p>Profesores Activos</p>
                     </div>
+                    
+                    <!-- Tarjeta 2: Asistencias del día -->
                     <div class="stat-card">
+                        <!-- Número dinámico de asistencias registradas hoy -->
                         <h3 id="asistenciasHoy">42</h3>
+                        <!-- Descripción de la métrica -->
                         <p>Asistencias Hoy</p>
                     </div>
+                    
+                    <!-- Tarjeta 3: Ausencias del día -->
                     <div class="stat-card">
+                        <!-- Número dinámico de ausencias hoy -->
                         <h3 id="ausenciasHoy">3</h3>
+                        <!-- Descripción de la métrica -->
                         <p>Ausencias Hoy</p>
                     </div>
+                    
+                    <!-- Tarjeta 4: Porcentaje de asistencia mensual -->
                     <div class="stat-card">
+                        <!-- Porcentaje dinámico de asistencia mensual -->
                         <h3 id="porcentajeAsistencia">96%</h3>
+                        <!-- Descripción de la métrica -->
                         <p>Asistencia Mensual</p>
                     </div>
                 </div>
 
+                <!-- Sección de actividad reciente -->
                 <div class="recent-activity">
+                    <!-- Título de la sección de actividad -->
                     <h3>Actividad Reciente</h3>
+                    <!-- Lista contenedora de actividades -->
                     <div class="activity-list">
+                        
+                        <!-- Item de actividad 1 -->
                         <div class="activity-item">
+                            <!-- Marca de tiempo de la actividad -->
                             <span class="activity-time">Hoy, 08:30 AM</span>
+                            <!-- Descripción de la actividad realizada -->
                             <span class="activity-text">Prof. Juan Pérez registró asistencia</span>
                         </div>
+                        
+                        <!-- Item de actividad 2 -->
                         <div class="activity-item">
+                            <!-- Marca de tiempo de la actividad -->
                             <span class="activity-time">Hoy, 08:45 AM</span>
+                            <!-- Descripción de la actividad realizada -->
                             <span class="activity-text">Prof. María García registró asistencia</span>
                         </div>
+                        
+                        <!-- Item de actividad 3 -->
                         <div class="activity-item">
+                            <!-- Marca de tiempo de la actividad -->
                             <span class="activity-time">Ayer, 05:20 PM</span>
+                            <!-- Descripción de la actividad realizada -->
                             <span class="activity-text">Nuevo aviso publicado</span>
                         </div>
                     </div>
@@ -88,13 +174,24 @@
         </div>
     </main>
 
+    <!-- Pie de página del sistema -->
     <footer>
         <div class="container">
+            <!-- Texto de copyright y información del sistema -->
             <p>Sistema de Control de Asistencia para Profesores - ConectaTec &copy; 2025</p>
         </div>
     </footer>
 
+    <!-- 
+        Script principal de la aplicación
+        Contiene la lógica de funcionalidades del dashboard
+    -->
     <script src="js/main.js"></script>
+    
+    <!-- 
+        Script de autenticación y manejo de sesiones
+        Incluye la función logout() referenciada en el botón de cerrar sesión
+    -->
     <script src="js/auth.js"></script>
 </body>
 </html>

@@ -1,106 +1,231 @@
+<!-- Declaración del tipo de documento HTML5 -->
 <!DOCTYPE html>
+<!-- Elemento raíz del documento con idioma español -->
 <html lang="es">
+
+<!-- Sección HEAD: Metadatos y configuraciones -->
 <head>
+    <!-- Codificación de caracteres UTF-8 para soportar caracteres especiales -->
     <meta charset="UTF-8">
+    <!-- Configuración viewport para responsive design en dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Calificaciones - ConectaTec</title>
+    <!-- Enlace a la hoja de estilos CSS principal -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
+<!-- Sección BODY: Contenido visible de la página -->
 <body>
+    <!-- Cabecera principal de la aplicación -->
     <header>
+        <!-- Contenedor para centrar el contenido -->
         <div class="container">
+            <!-- Contenido de la cabecera organizado en fila -->
             <div class="header-content">
+                
+                <!-- Logo y marca del sistema -->
                 <div class="logo">
+                    <!-- Icono representativo del sistema -->
                     <span class="logo-icon">📊</span>
+                    <!-- Nombre del sistema -->
                     <h1>ConectaTec</h1>
                 </div>
+
+                <!-- Navegación principal superior -->
                 <nav>
+                    <!-- Lista de enlaces de navegación -->
                     <ul>
+                        <!-- Enlace hacia el dashboard -->
                         <li><a href="dashboard.html">Inicio</a></li>
+                        <!-- Enlace hacia módulo de asistencia -->
                         <li><a href="asistencia.html">Asistencia</a></li>
+                        <!-- Enlace hacia gestión de profesores -->
                         <li><a href="profesores.html">Profesores</a></li>
+                        <!-- Enlace hacia creación de materias -->
+                        <li><a href="materia.html">Materia</a></li>
+                        <!-- Enlace hacia creación de grupos -->
+                        <li><a href="grupos.html">Grupos</a></li>
+                        <!-- Enlace activo hacia módulo de calificaciones -->
                         <li><a href="calificaciones.html" class="active">Calificaciones</a></li>
+                        <!-- Enlace hacia sistema de avisos -->
                         <li><a href="avisos.html">Avisos</a></li>
                     </ul>
                 </nav>
+
+                <!-- Información del usuario y controles de sesión -->
                 <div class="user-info">
+                    <!-- Nombre del usuario actual (se actualiza dinámicamente) -->
                     <span id="userName">Coordinador</span>
+                    <!-- 
+                        Botón para cerrar sesión
+                        onclick="logout()" - Función JavaScript que maneja el cierre de sesión
+                    -->
                     <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Contenido principal de la página -->
     <main class="container">
+        <!-- Contenedor principal del dashboard -->
         <div class="dashboard">
+            
+            <!-- Barra lateral de navegación -->
             <aside class="sidebar">
+                <!-- Título de la sección de navegación -->
                 <h2>Navegación</h2>
+                <!-- Lista de enlaces del menú lateral -->
                 <ul>
+                    <!-- Enlace al dashboard -->
                     <li><a href="dashboard.html">Dashboard</a></li>
+                    <!-- Enlace para registrar asistencia de profesores -->
                     <li><a href="asistencia.html">Registrar Asistencia</a></li>
+                    <!-- Enlace para ver lista completa de profesores -->
                     <li><a href="profesores.html">Lista de Profesores</a></li>
+                    <!-- Enlace hacia creación de materias -->
+                    <li><a href="materia.html">Materia</a></li>
+                    <!-- Enlace hacia creación de grupos -->
+                    <li><a href="grupos.html">Grupos</a></li>
+                    <!-- Enlace activo al módulo de calificaciones -->
                     <li><a href="calificaciones.html" class="active">Calificaciones</a></li>
+                    <!-- Enlace al sistema de avisos y notificaciones -->
                     <li><a href="avisos.html">Avisos</a></li>
+                    <!-- Enlace a configuración del sistema -->
                     <li><a href="configuracion.html">Configuración</a></li>
                 </ul>
             </aside>
 
+            <!-- Sección de contenido principal -->
             <section class="content">
+                <!-- Título principal del módulo de calificaciones -->
                 <h2>Gestor de Calificaciones</h2>
                 
+                <!-- Contenedor de controles de filtrado y búsqueda -->
                 <div class="grades-controls">
+                    <!-- Grupo: Selección de profesor -->
                     <div class="form-group">
+                        <!-- Etiqueta para el selector de profesores -->
                         <label for="selectProfessor">Seleccionar Profesor</label>
+                        <!-- 
+                            Selector desplegable para filtrar por profesor
+                            id="selectProfessor" - Identificador para manipulación JS
+                        -->
                         <select id="selectProfessor">
+                            <!-- Opción por defecto para mostrar todos los profesores -->
                             <option value="">-- Todos los profesores --</option>
+                            <!-- Opción de profesor específico con valor numérico como ID -->
                             <option value="1">Prof. Juan Pérez</option>
+                            <!-- Segunda opción de profesor -->
                             <option value="2">Prof. María García</option>
+                            <!-- Nota: Más opciones se cargarían dinámicamente desde BD -->
                         </select>
                     </div>
+                    
+                    <!-- Grupo: Selección de periodo académico -->
                     <div class="form-group">
+                        <!-- Etiqueta para el selector de periodos -->
                         <label for="selectPeriod">Periodo</label>
+                        <!-- 
+                            Selector desplegable para elegir periodo académico
+                            id="selectPeriod" - Identificador para manipulación JS
+                        -->
                         <select id="selectPeriod">
+                            <!-- Opción para primer semestre del 2025 -->
                             <option value="2025-1">2025-1</option>
+                            <!-- Opción para segundo semestre del 2025 -->
                             <option value="2025-2">2025-2</option>
+                            <!-- Nota: Los periodos podrían cargarse dinámicamente -->
                         </select>
                     </div>
+                    
+                    <!-- 
+                        Botón para cargar calificaciones con los filtros seleccionados
+                        onclick="loadGrades()" - Función JavaScript que carga los datos en la tabla
+                    -->
                     <button class="btn" onclick="loadGrades()">Cargar Calificaciones</button>
                 </div>
 
+                <!-- Contenedor para la tabla de calificaciones -->
                 <div class="table-container">
+                    <!-- 
+                        Tabla principal de calificaciones
+                        id="gradesTable" - Identificador para manipulación y actualización dinámica
+                    -->
                     <table id="gradesTable">
+                        <!-- Encabezados de la tabla -->
                         <thead>
                             <tr>
+                                <!-- Columna: Nombre del profesor -->
                                 <th>Profesor</th>
+                                <!-- Columna: Asignatura impartida -->
                                 <th>Asignatura</th>
+                                <!-- Columna: Número de estudiantes -->
                                 <th>Estudiantes</th>
+                                <!-- Columna: Calificación promedio del grupo -->
                                 <th>Calificación Promedio</th>
+                                <!-- Columna: Estado del curso o evaluación -->
                                 <th>Estado</th>
+                                <!-- Columna: Acciones disponibles para cada registro -->
                                 <th>Acciones</th>
                             </tr>
                         </thead>
+                        <!-- 
+                            Cuerpo de la tabla - inicialmente vacío
+                            Se llenará dinámicamente con JavaScript al cargar las calificaciones
+                        -->
                         <tbody>
-                            <!-- Los datos se cargarán dinámicamente -->
+                            <!-- Los datos se cargarán dinámicamente mediante JavaScript -->
                         </tbody>
                     </table>
                 </div>
 
+                <!-- Contenedor para botones de acciones masivas -->
                 <div class="grades-actions">
+                    <!-- 
+                        Botón para exportar calificaciones a formato Excel
+                        onclick="exportGrades()" - Función JavaScript para generar archivo Excel
+                    -->
                     <button class="btn" onclick="exportGrades()">Exportar a Excel</button>
+                    
+                    <!-- 
+                        Botón para generar reporte de calificaciones
+                        onclick="generateReport()" - Función JavaScript para crear reporte
+                    -->
                     <button class="btn btn-secondary" onclick="generateReport()">Generar Reporte</button>
                 </div>
             </section>
         </div>
     </main>
 
+    <!-- Pie de página del sistema -->
     <footer>
         <div class="container">
+            <!-- Texto de copyright y información del sistema -->
             <p>Sistema de Control de Asistencia para Profesores - ConectaTec &copy; 2025</p>
         </div>
     </footer>
 
+    <!-- 
+        Script principal de la aplicación
+        Contiene funcionalidades generales del sistema
+    -->
     <script src="js/main.js"></script>
+    
+    <!-- 
+        Script específico para el módulo de calificaciones
+        Contiene las funciones:
+        - loadGrades() - Carga datos en la tabla
+        - exportGrades() - Exporta a Excel
+        - generateReport() - Genera reportes
+    -->
     <script src="js/grades.js"></script>
+    
+    <!-- 
+        Script de autenticación y manejo de sesiones
+        Incluye la función logout() para cierre de sesión
+    -->
     <script src="js/auth.js"></script>
 </body>
 </html>

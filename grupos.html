@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Grupos - Sistema de Asistencia</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📊</span>
+                    <h1>ConectaTec</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="dashboard.html">Inicio</a></li>
+                        <li><a href="asistencia.html">Asistencia</a></li>
+                        <li><a href="profesores.html">Profesores</a></li>
+                        <li><a href="materia.html">Materia</a></li>
+                        <li><a href="grupos.html" class="active">Grupos</a></li>
+                        <li><a href="calificaciones.html">Calificaciones</a></li>
+                        <li><a href="avisos.html">Avisos</a></li>
+                    </ul>
+                </nav>
+                <div class="user-info">
+                    <span id="userName">Administrador</span>
+                    <a href="index.html" class="btn btn-secondary" onclick="return logout();">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="dashboard">
+            <aside class="sidebar">
+                <h2>Navegación</h2>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="asistencia.html">Registrar Asistencia</a></li>
+                    <li><a href="profesores.html">Lista de Profesores</a></li>
+                    <li><a href="materia.html">Materia</a></li>
+                    <li><a href="grupos.html" class="active">Grupos</a></li>
+                    <li><a href="calificaciones.html">Calificaciones</a></li>
+                    <li><a href="avisos.html">Avisos</a></li>
+                    <li><a href="configuracion.html">Configuración</a></li>
+                </ul>
+            </aside>
+
+            <section class="content">
+                <div class="content-header">
+                    <h2>Gestión de Grupos</h2>
+                </div>
+
+                <div class="grupo-form">
+                    <h3 id="formTitle">Registrar Nuevo Grupo</h3>
+                    <div id="formGrupo">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombreGrupo">Nombre del Grupo</label>
+                                <input type="text" id="nombreGrupo" placeholder="Ej. Grupo A" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="periodoGrupo">Periodo</label>
+                                <input type="text" id="periodoGrupo" placeholder="Ej. 2025-1" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="materiaId">Materia</label>
+                                <select id="materiaId" required>
+                                    <option value="">Seleccione una materia</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="profesorId">Profesor</label>
+                                <select id="profesorId" required>
+                                    <option value="">Seleccione un profesor</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="horarioGrupo">Horario</label>
+                                <input type="text" id="horarioGrupo" placeholder="Ej. Lun-Mier 9:00" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="aulaGrupo">Aula</label>
+                                <input type="text" id="aulaGrupo" placeholder="Ej. B15" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cupoMaximo">Cupo Máximo</label>
+                                <input type="number" id="cupoMaximo" placeholder="Ej. 30" min="1" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="activoGrupo">Estado</label>
+                                <select id="activoGrupo">
+                                    <option value="true">Activo</option>
+                                    <option value="false">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn" id="btnGuardar">Guardar Grupo</button>
+                            <button type="button" class="btn btn-secondary" id="btnLimpiar">Limpiar Formulario</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-section">
+                    <h3>Grupos Registrados</h3>
+                    <div class="filters">
+                        <input type="text" id="searchGrupo" placeholder="Buscar grupo...">
+                        <select id="filterEstado">
+                            <option value="">Todos los estados</option>
+                            <option value="true">Activos</option>
+                            <option value="false">Inactivos</option>
+                        </select>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="tabla-grupos">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Grupo</th>
+                                    <th>Materia</th>
+                                    <th>Profesor</th>
+                                    <th>Periodo</th>
+                                    <th>Horario</th>
+                                    <th>Aula</th>
+                                    <th>Cupo</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaGrupos"></tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="table-info">
+                        <p id="contadorGrupos">Total de grupos: 0</p>
+                        <p id="contadorEstudiantes">Total cupos disponibles: 0</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Sistema de Control de Asistencia para Profesores &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Datos iniciales
+        let grupos = [];
+        let materiasLista = [];
+        let profesoresLista = [];
+        let isEditing = false;
+        let currentEditId = null;
+
+        // Cargar datos iniciales
+        function cargarDatosIniciales() {
+            // Datos de ejemplo para materias
+            materiasLista = [
+                { identificacion: 1, nombre: "Matemáticas I", codigo: "MAT-101" },
+                { identificacion: 2, nombre: "Física General", codigo: "FIS-101" },
+                { identificacion: 3, nombre: "Programación Básica", codigo: "PRO-101" },
+                { identificacion: 4, nombre: "Inglés Técnico", codigo: "ING-101" }
+            ];
+
+            // Datos de ejemplo para profesores
+            profesoresLista = [
+                { id: 1, nombre: "Prof. Juan Pérez", email: "juan.perez@institucion.edu" },
+                { id: 2, nombre: "Prof. María García", email: "maria.garcia@institucion.edu" },
+                { id: 3, nombre: "Prof. Carlos López", email: "carlos.lopez@institucion.edu" },
+                { id: 4, nombre: "Prof. Ana Rodríguez", email: "ana.rodriguez@institucion.edu" }
+            ];
+
+            // Datos de ejemplo para grupos
+            grupos = [
+                {
+                    id: 1,
+                    nombre_grupo: "Grupo A",
+                    materia_id: 1,
+                    profesor_id: 1,
+                    periodo: "2025-1",
+                    horario: "Lun-Mier 9:00",
+                    aula: "B15",
+                    cupo_maximo: 30,
+                    activo: true
+                },
+                {
+                    id: 2,
+                    nombre_grupo: "Grupo B",
+                    materia_id: 2,
+                    profesor_id: 2,
+                    periodo: "2025-1",
+                    horario: "Mar-Jue 11:00",
+                    aula: "A22",
+                    cupo_maximo: 25,
+                    activo: true
+                },
+                {
+                    id: 3,
+                    nombre_grupo: "Grupo C",
+                    materia_id: 3,
+                    profesor_id: 3,
+                    periodo: "2025-1",
+                    horario: "Vie 14:00",
+                    aula: "C10",
+                    cupo_maximo: 20,
+                    activo: false
+                }
+            ];
+
+            // Guardar en localStorage
+            guardarDatos();
+        }
+
+        // Guardar datos en localStorage
+        function guardarDatos() {
+            try {
+                localStorage.setItem('grupos_conectatec', JSON.stringify(grupos));
+                localStorage.setItem('materias_conectatec', JSON.stringify(materiasLista));
+                localStorage.setItem('profesores_conectatec', JSON.stringify(profesoresLista));
+                console.log('Datos guardados en localStorage');
+            } catch (e) {
+                console.error('Error al guardar en localStorage:', e);
+            }
+        }
+
+        // Cargar datos desde localStorage
+        function cargarDatos() {
+            try {
+                const gruposGuardados = localStorage.getItem('grupos_conectatec');
+                const materiasGuardadas = localStorage.getItem('materias_conectatec');
+                const profesoresGuardados = localStorage.getItem('profesores_conectatec');
+
+                if (gruposGuardados && materiasGuardadas && profesoresGuardados) {
+                    grupos = JSON.parse(gruposGuardados);
+                    materiasLista = JSON.parse(materiasGuardadas);
+                    profesoresLista = JSON.parse(profesoresGuardados);
+                    console.log('Datos cargados desde localStorage');
+                } else {
+                    console.log('No hay datos en localStorage, cargando datos iniciales');
+                    cargarDatosIniciales();
+                }
+            } catch (e) {
+                console.error('Error al cargar datos:', e);
+                cargarDatosIniciales();
+            }
+        }
+
+        // Cargar materias al select
+        function cargarSelectMaterias() {
+            const select = document.getElementById("materiaId");
+            if (!select) {
+                console.error('No se encontró el elemento materiaId');
+                return;
+            }
+            
+            select.innerHTML = '<option value="">Seleccione una materia</option>';
+            
+            materiasLista.forEach(m => {
+                const option = document.createElement('option');
+                option.value = m.identificacion;
+                option.textContent = `${m.nombre} (${m.codigo})`;
+                select.appendChild(option);
+            });
+        }
+
+        // Cargar profesores al select
+        function cargarSelectProfesores() {
+            const select = document.getElementById("profesorId");
+            if (!select) {
+                console.error('No se encontró el elemento profesorId');
+                return;
+            }
+            
+            select.innerHTML = '<option value="">Seleccione un profesor</option>';
+            
+            profesoresLista.forEach(p => {
+                const option = document.createElement('option');
+                option.value = p.id;
+                option.textContent = p.nombre;
+                select.appendChild(option);
+            });
+        }
+
+        // Renderizar tabla
+        function renderTabla() {
+            const tablaGruposBody = document.getElementById("tablaGrupos");
+            if (!tablaGruposBody) {
+                console.error('No se encontró el elemento tablaGrupos');
+                return;
+            }
+            
+            tablaGruposBody.innerHTML = "";
+            
+            let totalCupos = 0;
+            
+            grupos.forEach((g) => {
+                const materia = materiasLista.find(m => m.identificacion == g.materia_id);
+                const profesor = profesoresLista.find(p => p.id == g.profesor_id);
+                
+                const nombreMateria = materia ? `${materia.nombre} (${materia.codigo})` : "—";
+                const nombreProfesor = profesor ? profesor.nombre : "—";
+                const estado = g.activo ? "Activo" : "Inactivo";
+                const estadoClase = g.activo ? "status-present" : "status-absent";
+                
+                totalCupos += g.cupo_maximo;
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${g.id}</strong></td>
+                    <td>${g.nombre_grupo}</td>
+                    <td>${nombreMateria}</td>
+                    <td>${nombreProfesor}</td>
+                    <td>${g.periodo}</td>
+                    <td>${g.horario}</td>
+                    <td><code>${g.aula}</code></td>
+                    <td>${g.cupo_maximo}</td>
+                    <td><span class="${estadoClase}">${estado}</span></td>
+                    <td class="acciones">
+                        <button type="button" onclick="editarGrupo(${g.id})" class="btn btn-small">Editar</button>
+                        <button type="button" onclick="eliminarGrupo(${g.id})" class="btn btn-small btn-secondary">Eliminar</button>
+                    </td>
+                `;
+                
+                tablaGruposBody.appendChild(row);
+            });
+            
+            // Actualizar contadores
+            const contadorGrupos = document.getElementById("contadorGrupos");
+            const contadorEstudiantes = document.getElementById("contadorEstudiantes");
+            
+            if (contadorGrupos) {
+                contadorGrupos.textContent = `Total de grupos: ${grupos.length}`;
+            }
+            if (contadorEstudiantes) {
+                contadorEstudiantes.textContent = `Total cupos disponibles: ${totalCupos}`;
+            }
+        }
+
+        // Filtrar grupos
+        function filtrarGrupos() {
+            const searchTerm = document.getElementById("searchGrupo").value.toLowerCase();
+            const filterEstado = document.getElementById("filterEstado").value;
+            
+            const filas = document.querySelectorAll("#tablaGrupos tr");
+            let visibleCount = 0;
+            
+            filas.forEach(fila => {
+                const textoFila = fila.textContent.toLowerCase();
+                const estadoCelda = fila.querySelector("td:nth-child(9) span");
+                const esActivo = estadoCelda && estadoCelda.textContent === "Activo";
+                
+                let mostrar = true;
+                
+                // Filtrar por búsqueda
+                if (searchTerm && !textoFila.includes(searchTerm)) {
+                    mostrar = false;
+                }
+                
+                // Filtrar por estado
+                if (filterEstado) {
+                    const estadoBuscado = filterEstado === "true";
+                    if (estadoBuscado !== esActivo) {
+                        mostrar = false;
+                    }
+                }
+                
+                fila.style.display = mostrar ? "" : "none";
+                if (mostrar) visibleCount++;
+            });
+            
+            document.getElementById("contadorGrupos").textContent = `Grupos mostrados: ${visibleCount} de ${grupos.length}`;
+        }
+
+        // Guardar grupo
+        function guardarGrupo() {
+            const nombre = document.getElementById("nombreGrupo").value.trim();
+            const materiaId = document.getElementById("materiaId").value;
+            const profesorId = document.getElementById("profesorId").value;
+            const periodo = document.getElementById("periodoGrupo").value.trim();
+            const horario = document.getElementById("horarioGrupo").value.trim();
+            const aula = document.getElementById("aulaGrupo").value.trim();
+            const cupoMaximo = parseInt(document.getElementById("cupoMaximo").value);
+            const activo = document.getElementById("activoGrupo").value === "true";
+            
+            // Validaciones
+            if (!nombre || !materiaId || !profesorId || !periodo || !horario || !aula || !cupoMaximo) {
+                alert("Por favor, complete todos los campos obligatorios.");
+                return false;
+            }
+            
+            if (isNaN(cupoMaximo) || cupoMaximo < 1 || cupoMaximo > 100) {
+                alert("El cupo máximo debe ser un número entre 1 y 100.");
+                return false;
+            }
+            
+            const datosGrupo = {
+                nombre_grupo: nombre,
+                materia_id: parseInt(materiaId),
+                profesor_id: parseInt(profesorId),
+                periodo: periodo,
+                horario: horario,
+                aula: aula,
+                cupo_maximo: cupoMaximo,
+                activo: activo
+            };
+            
+            if (isEditing && currentEditId !== null) {
+                // Actualizar grupo existente
+                const index = grupos.findIndex(g => g.id === currentEditId);
+                if (index !== -1) {
+                    // Mantener el ID original
+                    grupos[index] = { ...grupos[index], ...datosGrupo };
+                    alert("Grupo actualizado correctamente.");
+                }
+            } else {
+                // Agregar nuevo grupo
+                const nuevoGrupo = {
+                    id: Date.now(),
+                    ...datosGrupo
+                };
+                grupos.push(nuevoGrupo);
+                alert("Grupo guardado correctamente.");
+            }
+            
+            // Guardar y actualizar
+            guardarDatos();
+            renderTabla();
+            limpiarFormulario();
+            
+            return false; // Prevenir comportamiento por defecto
+        }
+
+        // Editar grupo
+        function editarGrupo(id) {
+            const grupo = grupos.find(g => g.id === id);
+            if (grupo) {
+                isEditing = true;
+                currentEditId = id;
+                
+                // Llenar formulario
+                document.getElementById("nombreGrupo").value = grupo.nombre_grupo || '';
+                document.getElementById("materiaId").value = grupo.materia_id || '';
+                document.getElementById("profesorId").value = grupo.profesor_id || '';
+                document.getElementById("periodoGrupo").value = grupo.periodo || '';
+                document.getElementById("horarioGrupo").value = grupo.horario || '';
+                document.getElementById("aulaGrupo").value = grupo.aula || '';
+                document.getElementById("cupoMaximo").value = grupo.cupo_maximo || '';
+                document.getElementById("activoGrupo").value = grupo.activo ? "true" : "false";
+                
+                // Cambiar texto del botón
+                const btnGuardar = document.getElementById("btnGuardar");
+                const formTitle = document.getElementById("formTitle");
+                
+                if (btnGuardar) btnGuardar.textContent = "Actualizar Grupo";
+                if (formTitle) formTitle.textContent = "Editar Grupo";
+                
+                // Desplazar al formulario
+                document.getElementById("nombreGrupo").focus();
+            }
+        }
+
+        // Eliminar grupo
+        function eliminarGrupo(id) {
+            if (confirm("¿Está seguro de que desea eliminar este grupo?")) {
+                grupos = grupos.filter(g => g.id !== id);
+                guardarDatos();
+                renderTabla();
+                alert("Grupo eliminado correctamente.");
+            }
+        }
+
+        // Limpiar formulario
+        function limpiarFormulario() {
+            document.getElementById("nombreGrupo").value = '';
+            document.getElementById("materiaId").value = '';
+            document.getElementById("profesorId").value = '';
+            document.getElementById("periodoGrupo").value = '';
+            document.getElementById("horarioGrupo").value = '';
+            document.getElementById("aulaGrupo").value = '';
+            document.getElementById("cupoMaximo").value = '';
+            document.getElementById("activoGrupo").value = 'true';
+            
+            isEditing = false;
+            currentEditId = null;
+            
+            const btnGuardar = document.getElementById("btnGuardar");
+            const formTitle = document.getElementById("formTitle");
+            
+            if (btnGuardar) btnGuardar.textContent = "Guardar Grupo";
+            if (formTitle) formTitle.textContent = "Registrar Nuevo Grupo";
+            
+            document.getElementById("nombreGrupo").focus();
+        }
+
+        // Inicializar
+        function inicializarGrupos() {
+            cargarDatos();
+            cargarSelectMaterias();
+            cargarSelectProfesores();
+            renderTabla();
+            
+            // Configurar eventos
+            const btnGuardar = document.getElementById("btnGuardar");
+            const btnLimpiar = document.getElementById("btnLimpiar");
+            const searchGrupo = document.getElementById("searchGrupo");
+            const filterEstado = document.getElementById("filterEstado");
+            
+            if (btnGuardar) {
+                btnGuardar.addEventListener("click", guardarGrupo);
+            }
+            
+            if (btnLimpiar) {
+                btnLimpiar.addEventListener("click", limpiarFormulario);
+            }
+            
+            if (searchGrupo) {
+                searchGrupo.addEventListener("keyup", filtrarGrupos);
+            }
+            
+            if (filterEstado) {
+                filterEstado.addEventListener("change", filtrarGrupos);
+            }
+            
+            // Verificar autenticación
+            if (typeof checkAuth === 'function') checkAuth();
+            if (typeof checkAuthentication === 'function') checkAuthentication();
+            if (typeof adjustUIByUserType === 'function') adjustUIByUserType();
+            
+            // Ajustar permisos según usuario
+            const userType = localStorage.getItem('userType');
+            if (userType === 'profesor') {
+                // Ocultar funcionalidades para profesores
+                if (btnLimpiar) btnLimpiar.style.display = 'none';
+                
+                // Mostrar solo grupos del profesor
+                const profesorNombre = localStorage.getItem('userName');
+                const profesor = profesoresLista.find(p => p.nombre === profesorNombre);
+                if (profesor) {
+                    grupos = grupos.filter(g => g.profesor_id === profesor.id);
+                    renderTabla();
+                }
+                
+                alert("Nota: Como profesor, solo puedes ver tus grupos asignados.");
+            }
+        }
+
+        // Función logout
+        function logout() {
+            if (typeof window.logout === 'function') {
+                return window.logout();
+            } else {
+                localStorage.clear();
+                window.location.href = 'index.html';
+                return false;
+            }
+        }
+
+        // Esperar a que el DOM esté completamente cargado
+        document.addEventListener("DOMContentLoaded", function() {
+            inicializarGrupos();
+        });
+    </script>
+
+    <style>
+        /* Estilos específicos para la página de grupos */
+        .grupo-form {
+            background-color: var(--gris-claro);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--azul-secundario);
+        }
+
+        .grupo-form h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--azul-principal);
+            border-bottom: 2px solid var(--verde-principal);
+            padding-bottom: 10px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gris-oscuro);
+        }
+
+        .table-section {
+            margin-top: 30px;
+        }
+
+        .table-section h3 {
+            margin-bottom: 15px;
+            color: var(--azul-principal);
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            background-color: var(--gris-claro);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .filters input, .filters select {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--gris-oscuro);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .tabla-grupos {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .tabla-grupos thead {
+            background-color: var(--azul-principal);
+            color: var(--blanco);
+        }
+
+        .tabla-grupos th,
+        .tabla-grupos td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--gris-claro);
+            vertical-align: top;
+        }
+
+        .tabla-grupos tbody tr:hover {
+            background-color: var(--gris-claro);
+        }
+
+        .tabla-grupos td code {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--azul-secundario);
+        }
+
+        .acciones {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .acciones .btn-small {
+            padding: 5px 10px;
+            font-size: 0.85rem;
+            min-width: 70px;
+        }
+
+        .table-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: var(--gris-claro);
+            border-radius: 8px;
+            font-style: italic;
+            color: var(--gris-oscuro);
+        }
+
+        .table-info p {
+            margin: 0;
+        }
+
+        /* Responsive para tabla */
+        @media (max-width: 1200px) {
+            .table-container {
+                overflow-x: auto;
+            }
+            
+            .tabla-grupos {
+                min-width: 1000px;
+            }
+        }
+
+        /* Validación de formulario */
+        input:invalid, select:invalid {
+            border-color: #e74c3c !important;
+        }
+
+        input:valid, select:valid {
+            border-color: var(--verde-principal) !important;
+        }
+
+        .required::after {
+            content: " *";
+            color: #e74c3c;
+        }
+    </style>
+</body>
+</html>

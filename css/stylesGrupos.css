@@ -1,0 +1,238 @@
+/* ===========================================
+   PALETA DE COLORES (igual que Materias)
+=========================================== */
+:root {
+    --azul-principal: #2c3e50;
+    --azul-secundario: #3498db;
+    --verde-principal: #27ae60;
+    --verde-secundario: #2ecc71;
+    --gris-claro: #ecf0f1;
+    --gris-oscuro: #7f8c8d;
+    --blanco: #ffffff;
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --radius: 10px;
+    --transition: 0.25s ease;
+}
+
+/* ===========================================
+   RESET / BASE
+=========================================== */
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: var(--gris-claro);
+    color: var(--azul-principal);
+}
+
+/* ===========================================
+   HEADER SUPERIOR (igual que Materias)
+=========================================== */
+header {
+    background: var(--azul-principal);
+    color: var(--blanco);
+    padding: 12px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    box-shadow: var(--sombra);
+}
+
+.header-content {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo { display:flex; align-items:center; gap:10px; }
+.logo img{ height:40px; width:auto; display:block; }
+.logo h1 { font-size:20px; margin:0; color:var(--blanco); }
+
+nav ul { display:flex; gap:18px; list-style:none; margin:0; padding:0; align-items:center; }
+nav ul li a {
+    color: rgba(255,255,255,0.92);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: var(--transition);
+}
+nav ul li a:hover, nav ul li a.active {
+    color: var(--verde-secundario);
+    background: rgba(255,255,255,0.06);
+    border-bottom: 2px solid var(--verde-secundario);
+}
+
+/* user box on header */
+.user-info { display:flex; align-items:center; gap:12px; color:var(--blanco); }
+.user-info a {
+    background: var(--azul-secundario);
+    color: var(--blanco);
+    padding: 7px 12px;
+    border-radius: 6px;
+    text-decoration:none;
+    font-weight:600;
+}
+.user-info a:hover { background: #2b7bb8; }
+
+/* push page content below fixed header */
+main { margin-top: 84px; display:flex; gap:20px; align-items: flex-start; }
+
+/* ===========================================
+   SIDEBAR (igual que Materias)
+=========================================== */
+.sidebar {
+    width: 250px;
+    background: var(--blanco);
+    padding: 20px;
+    border-radius: 8px;
+    margin-left: 20px;
+    box-shadow: var(--sombra);
+    height: fit-content;
+}
+
+.sidebar h2 {
+    margin: 0 0 12px 0;
+    color: var(--azul-principal);
+    border-bottom: 2px solid var(--verde-principal);
+    padding-bottom: 8px;
+    font-size: 18px;
+}
+
+.sidebar ul { list-style:none; padding:0; margin:12px 0 0 0; }
+.sidebar ul li { margin-bottom:10px; }
+.sidebar ul li a {
+    display:block;
+    padding:10px;
+    border-radius:6px;
+    text-decoration:none;
+    color:var(--azul-principal);
+    transition:var(--transition);
+    font-weight:600;
+}
+.sidebar ul li a:hover, .sidebar ul li a.active {
+    background: var(--gris-claro);
+    color: var(--verde-principal);
+}
+
+/* ===========================================
+   CONTENIDO PRINCIPAL (igual que Materias)
+=========================================== */
+.container-main {
+    flex:1;
+    margin: 0 20px 20px;
+    background: var(--blanco);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+    min-height: 60vh;
+}
+
+/* títulos */
+.container-main h2 { margin-top:0; color:var(--azul-principal); font-size:24px; }
+
+/* ===========================================
+   FORMULARIO (igual que Materias)
+=========================================== */
+.form-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    align-items: start;
+}
+
+.form-section label {
+    display:block;
+    margin-bottom:6px;
+    font-weight:600;
+    color:var(--azul-principal);
+    font-size:14px;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+    width:100%;
+    padding:10px 12px;
+    border-radius:8px;
+    border:1px solid var(--gris-oscuro);
+    background: #fff;
+    font-size:14px;
+    transition: var(--transition);
+}
+
+.form-section textarea { resize: vertical; min-height:64px; }
+
+/* boton principal */
+#btnGuardar {
+    grid-column: 1 / -1;
+    margin-top:6px;
+    padding:12px;
+    background: var(--verde-principal);
+    color: var(--blanco);
+    border: none;
+    border-radius:10px;
+    font-weight:700;
+    cursor:pointer;
+    transition: var(--transition);
+}
+#btnGuardar:hover { background: var(--verde-secundario); }
+
+/* ===========================================
+   TABLA (igual que Materias)
+=========================================== */
+.table-wrapper { overflow-x:auto; margin-top:18px; }
+.tabla {
+    width:100%;
+    border-collapse:collapse;
+    margin-top: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    background: var(--blanco);
+}
+.tabla thead { background: var(--azul-principal); color: var(--blanco); }
+.tabla th, .tabla td {
+    padding:14px;
+    font-size:14px;
+    border-bottom:1px solid #e6edf2;
+    text-align:left;
+}
+.tabla tr:hover { background: #f3f7fa; }
+
+/* estado badges (opcional) */
+.badge { display:inline-block; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px; }
+.badge.activo { background: var(--verde-principal); color:var(--blanco); }
+.badge.inactivo { background: #e74c3c; color:var(--blanco); }
+
+/* botones de acción */
+.btnDetalle, .btnEliminar {
+    padding:6px 10px;
+    border-radius:8px;
+    font-weight:700;
+    font-size:13px;
+    border:none;
+    cursor:pointer;
+    transition:var(--transition);
+}
+.btnDetalle { background:var(--azul-secundario); color:var(--blanco); }
+.btnDetalle:hover { background:#2b7bb8; }
+.btnEliminar { background:#e74c3c; color:var(--blanco); }
+.btnEliminar:hover { background:#c0392b; }
+
+/* ===========================================
+   RESPONSIVE (igual que Materias)
+=========================================== */
+@media (max-width: 900px) {
+    main { flex-direction: column; padding: 10px; }
+    .sidebar { width: 100%; margin-left: 0; margin-bottom: 12px; }
+    .container-main { margin: 0; width: 100%; padding: 18px; }
+    header { position: static; }
+    .header-content { width: 95%; }
+}

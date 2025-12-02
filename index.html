@@ -1,42 +1,104 @@
+<!-- Declaración del tipo de documento HTML5 -->
 <!DOCTYPE html>
+<!-- Elemento raíz del documento con idioma español -->
 <html lang="es">
+
+<!-- Sección HEAD: Metadatos y configuraciones -->
 <head>
+    <!-- Codificación de caracteres UTF-8 para soportar caracteres especiales -->
     <meta charset="UTF-8">
+    <!-- Configuración viewport para responsive design en dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Sistema de Asistencia Docente - ConectaTec</title>
+    <!-- Enlace a la hoja de estilos CSS principal -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
+<!-- Sección BODY: Contenido visible de la página -->
 <body>
+    <!-- Contenedor principal que centra el formulario de login -->
     <div class="login-container">
+        <!-- Caja que contiene todos los elementos del formulario -->
         <div class="login-box">
+            
+            <!-- Sección del logo y marca del sistema -->
             <div class="logo">
+                <!-- Icono representativo del sistema (emojí de gráfico) -->
                 <span class="logo-icon">📊</span>
+                <!-- Nombre del sistema -->
                 <h1>ConectaTec</h1>
             </div>
+
+            <!-- Formulario de autenticación -->
+            <!-- 
+                id="loginForm" - Identificador único para manipulación con JavaScript
+                action="php/login.php" - Script PHP que procesa el login en el servidor
+                method="POST" - Método seguro para enviar credenciales (no visible en URL)
+            -->
             <form id="loginForm" action="php/login.php" method="POST">
+                
+                <!-- Grupo de formulario: Campo Usuario -->
                 <div class="form-group">
+                    <!-- Etiqueta asociada al campo de usuario -->
                     <label for="username">Usuario</label>
+                    <!-- 
+                        Campo de texto para ingresar nombre de usuario
+                        required - Atributo HTML5 que hace el campo obligatorio
+                        name="username" - Identificador para procesamiento en backend
+                    -->
                     <input type="text" id="username" name="username" required>
                 </div>
+
+                <!-- Grupo de formulario: Campo Contraseña -->
                 <div class="form-group">
+                    <!-- Etiqueta asociada al campo de contraseña -->
                     <label for="password">Contraseña</label>
+                    <!-- 
+                        Campo de contraseña (oculta caracteres ingresados)
+                        type="password" - Oculta el texto para seguridad
+                        required - Campo obligatorio
+                    -->
                     <input type="password" id="password" name="password" required>
                 </div>
+
+                <!-- Grupo de formulario: Selección de Tipo de Usuario -->
                 <div class="form-group">
+                    <!-- Etiqueta para el selector de tipo de usuario -->
                     <label for="userType">Tipo de Usuario</label>
+                    <!-- 
+                        Selector desplegable para elegir tipo de usuario
+                        Define los permisos y vistas disponibles
+                    -->
                     <select id="userType" name="userType">
+                        <!-- Opción para usuario tipo Profesor -->
                         <option value="profesor">Profesor</option>
+                        <!-- Opción para usuario tipo Coordinador -->
                         <option value="coordinador">Coordinador</option>
                     </select>
                 </div>
+
+                <!-- Botón para enviar el formulario -->
+                <!-- 
+                    type="submit" - Dispara el envío del formulario
+                    class="btn btn-primary" - Clases CSS para estilizado
+                -->
                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
             </form>
+
+            <!-- Pie de página del login -->
             <div class="login-footer">
+                <!-- Mensaje con enlace de soporte técnico -->
                 <p>¿Problemas para acceder? <a href="#">Contactar al administrador</a></p>
             </div>
         </div>
     </div>
 
+    <!-- Enlace al archivo JavaScript de autenticación -->
+    <!-- 
+        src="js/auth.js" - Archivo que contiene la lógica de validación
+        y manejo de la autenticación del lado del cliente
+    -->
     <script src="js/auth.js"></script>
 </body>
 </html>

@@ -1,0 +1,282 @@
+/* ===========================================
+    PALETA DE COLORES
+=========================================== */
+:root {
+    --azul-principal: #2c3e50;
+    --azul-secundario: #3498db;
+    --verde-principal: #27ae60;
+    --verde-secundario: #2ecc71;
+    --gris-fondo: #f4f7f9; /* Fondo principal */
+    --gris-borde: #bdc3c7; /* Bordes de inputs y separadores */
+    --blanco: #ffffff;
+    --sombra: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra para header y pop-ups */
+    --sombra-card: 0 1px 1px rgba(0, 0, 0, 0.05); /* Sombra sutil para paneles */
+}
+
+/* ===========================================
+    ESTILOS GENERALES
+=========================================== */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--gris-fondo);
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+
+/* ===========================================
+    HEADER SUPERIOR
+=========================================== */
+header {
+    background: var(--azul-principal);
+    color: var(--blanco);
+    padding: 10px 0;
+    box-shadow: var(--sombra);
+    /* Línea sutil bajo el header como en la imagen */
+    border-bottom: 2px solid var(--verde-secundario); 
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+/* Navegación Superior */
+nav ul {
+    display: flex;
+    gap: 18px; /* Espacio entre ítems */
+    list-style: none;
+    margin: 0;
+}
+
+nav ul li a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: var(--verde-secundario);
+    font-weight: 700;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info span {
+    color: var(--gris-borde);
+}
+
+.user-info a {
+    background: none; 
+    border: 1px solid var(--blanco); /* Borde blanco para "Cerrar Sesión" */
+    color: var(--blanco);
+    padding: 7px 14px;
+    border-radius: 4px; 
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.user-info a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===========================================
+    LAYOUT GENERAL Y CONTENEDORES
+=========================================== */
+main {
+    display: flex;
+    width: 95%;
+    max-width: 1400px;
+    margin: 20px auto; 
+    gap: 20px;
+}
+
+/* SIDEBAR (Panel de Navegación Izquierdo) */
+.sidebar {
+    width: 200px; /* Ancho ajustado a la imagen */
+    background: var(--blanco);
+    padding: 0; 
+    border-radius: 4px;
+    box-shadow: var(--sombra-card);
+    height: fit-content;
+}
+
+/* Título de la sidebar: "Navegación" */
+.sidebar h2 {
+    margin: 0;
+    color: var(--azul-principal);
+    border-bottom: 1px solid var(--gris-borde); 
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 10px 0; 
+    margin: 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--azul-principal);
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.sidebar ul li a:hover {
+    background: var(--gris-fondo);
+    color: var(--verde-principal);
+}
+
+/* Enlace activo en el sidebar ("Registrar Asistencia") */
+.sidebar ul li a.active {
+    background: var(--gris-fondo);
+    color: var(--verde-principal);
+    font-weight: 600;
+    border-left: 3px solid var(--verde-principal); /* Línea verde de selección */
+    padding-left: 17px; 
+}
+
+/* CONTENIDO PRINCIPAL (Formulario de Asistencia) */
+.container-main {
+    flex: 1;
+    background: var(--blanco);
+    margin: 0; 
+    padding: 0; 
+    border-radius: 4px;
+    box-shadow: var(--sombra-card);
+}
+
+/* Título de la sección: "Registrar Asistencia" */
+.container-main h2 {
+    color: var(--azul-principal);
+    margin: 0;
+    padding: 15px 25px;
+    font-size: 24px;
+    font-weight: 600;
+    /* La línea verde gruesa bajo el título */
+    border-bottom: 4px solid var(--verde-principal); 
+}
+
+/* Contenedor del Formulario */
+.form-section {
+    padding: 25px; /* Padding interno del formulario */
+}
+
+/* ===========================================
+    FORMULARIO E INPUTS (Asistencia)
+=========================================== */
+
+/* Estilo para las etiquetas (labels) */
+.form-section label {
+    display: block;
+    margin-top: 25px; /* Espacio más grande entre campos */
+    margin-bottom: 5px; 
+    font-weight: 500;
+    color: var(--azul-principal);
+    font-size: 15px;
+}
+
+/* Estilo para los campos de entrada/select/textarea */
+.form-section input,
+.form-section select,
+.form-section textarea {
+    /* Calculamos el 100% menos el padding horizontal */
+    width: calc(100% - 24px); 
+    padding: 10px 12px; 
+    margin-top: 5px;
+    border: 1px solid var(--gris-borde);
+    border-radius: 4px; 
+    font-size: 15px;
+    background: var(--blanco);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.15s ease-in-out;
+    /* Si estás usando un <select>, haz que el texto se vea como un placeholder */
+    color: var(--azul-principal); 
+}
+
+/* Placeholder para el select (si la primera opción es el placeholder) */
+.form-section select option[value=""] {
+    color: var(--gris-borde);
+}
+
+/* Foco en el campo */
+.form-section input:focus,
+.form-section select:focus,
+.form-section textarea:focus {
+    border-color: var(--azul-secundario);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.form-section textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Estilos de botones de la vista de Grupos (mantenidos por si los necesitas) */
+#btnGuardar {
+    margin-top: 30px;
+    width: 100%;
+    padding: 12px;
+    background: var(--verde-principal);
+    color: white;
+    border: none;
+    border-radius: 4px; 
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+#btnGuardar:hover {
+    background: #1f8f4e;
+}
+
+/* ===========================================
+    RESPONSIVE
+=========================================== */
+@media (max-width: 900px) {
+    main {
+        flex-direction: column;
+        width: 100%;
+        margin: 15px auto;
+    }
+
+    .sidebar {
+        width: 95%;
+        margin: auto;
+        margin-bottom: 15px;
+    }
+
+    .container-main {
+        width: 95%;
+        margin: auto;
+    }
+}

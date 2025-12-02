@@ -1,87 +1,193 @@
+<!-- Declaración del tipo de documento HTML5 -->
 <!DOCTYPE html>
+<!-- Elemento raíz del documento con idioma español -->
 <html lang="es">
+
+<!-- Sección HEAD: Metadatos y configuraciones -->
 <head>
+    <!-- Codificación de caracteres UTF-8 para soportar caracteres especiales -->
     <meta charset="UTF-8">
+    <!-- Configuración viewport para responsive design en dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Configuración - ConectaTec</title>
+    <!-- Enlace a la hoja de estilos CSS principal -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
+<!-- Sección BODY: Contenido visible de la página -->
 <body>
+    <!-- Cabecera principal de la aplicación -->
     <header>
+        <!-- Contenedor para centrar el contenido -->
         <div class="container">
+            <!-- Contenido de la cabecera organizado en fila -->
             <div class="header-content">
+                
+                <!-- Logo y marca del sistema -->
                 <div class="logo">
+                    <!-- Icono representativo del sistema -->
                     <span class="logo-icon">📊</span>
+                    <!-- Nombre del sistema -->
                     <h1>ConectaTec</h1>
                 </div>
+
+                <!-- Navegación principal superior -->
                 <nav>
+                    <!-- Lista de enlaces de navegación -->
                     <ul>
+                        <!-- Enlace hacia el dashboard -->
                         <li><a href="dashboard.html">Inicio</a></li>
+                        <!-- Enlace hacia módulo de asistencia -->
                         <li><a href="asistencia.html">Asistencia</a></li>
+                        <!-- Enlace hacia gestión de profesores -->
                         <li><a href="profesores.html">Profesores</a></li>
+                        <!-- Enlace hacia creación de materias -->
+                        <li><a href="materia.html">Materia</a></li>
+                        <!-- Enlace hacia creación de grupos -->
+                        <li><a href="grupos.html">Grupos</a></li>
+                        <!-- Enlace hacia módulo de calificaciones -->
                         <li><a href="calificaciones.html">Calificaciones</a></li>
+                        <!-- Enlace hacia sistema de avisos -->
                         <li><a href="avisos.html">Avisos</a></li>
                     </ul>
                 </nav>
+
+                <!-- Información del usuario y controles de sesión -->
                 <div class="user-info">
+                    <!-- Nombre del usuario actual (se actualiza dinámicamente) -->
                     <span id="userName">Coordinador</span>
+                    <!-- 
+                        Botón para cerrar sesión
+                        onclick="logout()" - Función JavaScript que maneja el cierre de sesión
+                    -->
                     <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Contenido principal de la página -->
     <main class="container">
+        <!-- Contenedor principal del dashboard -->
         <div class="dashboard">
+            
+            <!-- Barra lateral de navegación -->
             <aside class="sidebar">
+                <!-- Título de la sección de navegación -->
                 <h2>Navegación</h2>
+                <!-- Lista de enlaces del menú lateral -->
                 <ul>
+                    <!-- Enlace al dashboard -->
                     <li><a href="dashboard.html">Dashboard</a></li>
+                    <!-- Enlace para registrar asistencia de profesores -->
                     <li><a href="asistencia.html">Registrar Asistencia</a></li>
+                    <!-- Enlace para ver lista completa de profesores -->
                     <li><a href="profesores.html">Lista de Profesores</a></li>
+                    <!-- Enlace hacia creación de materias -->
+                    <li><a href="materia.html">Materia</a></li>
+                    <!-- Enlace hacia creación de grupos -->
+                    <li><a href="grupos.html">Grupos</a></li>
+                    <!-- Enlace al módulo de calificaciones -->
                     <li><a href="calificaciones.html">Calificaciones</a></li>
+                    <!-- Enlace al sistema de avisos y notificaciones -->
                     <li><a href="avisos.html">Avisos</a></li>
+                    <!-- Enlace activo a configuración del sistema -->
                     <li><a href="configuracion.html" class="active">Configuración</a></li>
                 </ul>
             </aside>
 
+            <!-- Sección de contenido principal -->
             <section class="content">
+                <!-- Título principal del módulo de configuración -->
                 <h2>Configuración del Sistema</h2>
                 
+                <!-- Contenedor del sistema de pestañas -->
                 <div class="settings-tabs">
+                    <!-- Contenedor de botones para cambiar pestañas -->
                     <div class="tab-buttons">
+                        <!-- 
+                            Botón para pestaña General - Activo por defecto
+                            onclick="openTab('general')" - Función JavaScript para cambiar pestaña
+                        -->
                         <button class="tab-btn active" onclick="openTab('general')">General</button>
+                        <!-- Botón para pestaña de Gestión de Usuarios -->
                         <button class="tab-btn" onclick="openTab('users')">Usuarios</button>
+                        <!-- Botón para pestaña de Respaldo de Datos -->
                         <button class="tab-btn" onclick="openTab('backup')">Respaldo</button>
                     </div>
 
+                    <!-- 
+                        =============================================
+                        PESTAÑA: CONFIGURACIÓN GENERAL
+                        =============================================
+                    -->
                     <div id="general" class="tab-content active">
+                        <!-- Título de la pestaña -->
                         <h3>Configuración General</h3>
+                        <!-- Formulario para configuración general del sistema -->
                         <form id="generalSettings">
+                            <!-- Grupo: Nombre de la institución -->
                             <div class="form-group">
                                 <label for="institutionName">Nombre de la Institución</label>
+                                <!-- 
+                                    Campo de texto para el nombre de la institución
+                                    value="Institución Educativa Ejemplo" - Valor por defecto
+                                -->
                                 <input type="text" id="institutionName" value="Institución Educativa Ejemplo">
                             </div>
+                            
+                            <!-- Grupo: Hora de inicio de labores -->
                             <div class="form-group">
                                 <label for="workStart">Hora de inicio de labores</label>
+                                <!-- 
+                                    Campo de tiempo para hora de inicio
+                                    type="time" - Input nativo para selección de hora
+                                    value="08:00" - Valor por defecto (8:00 AM)
+                                -->
                                 <input type="time" id="workStart" value="08:00">
                             </div>
+                            
+                            <!-- Grupo: Hora de fin de labores -->
                             <div class="form-group">
                                 <label for="workEnd">Hora de fin de labores</label>
+                                <!-- 
+                                    Campo de tiempo para hora de fin
+                                    value="17:00" - Valor por defecto (5:00 PM)
+                                -->
                                 <input type="time" id="workEnd" value="17:00">
                             </div>
+                            
+                            <!-- Grupo: Tolerancia para tardanzas -->
                             <div class="form-group">
                                 <label for="toleranceMinutes">Tolerancia de tardanza (minutos)</label>
+                                <!-- 
+                                    Campo numérico para minutos de tolerancia
+                                    type="number" - Input para valores numéricos
+                                    value="15" - Valor por defecto (15 minutos)
+                                    min="0" - Valor mínimo permitido
+                                -->
                                 <input type="number" id="toleranceMinutes" value="15" min="0">
                             </div>
+                            
+                            <!-- Botón para guardar la configuración -->
                             <button type="submit" class="btn">Guardar Configuración</button>
                         </form>
                     </div>
 
+                    <!-- 
+                        =============================================
+                        PESTAÑA: GESTIÓN DE USUARIOS
+                        =============================================
+                    -->
                     <div id="users" class="tab-content">
+                        <!-- Título de la pestaña -->
                         <h3>Gestión de Usuarios</h3>
+                        <!-- Contenedor para la tabla de usuarios -->
                         <div class="table-container">
+                            <!-- Tabla de listado de usuarios -->
                             <table>
+                                <!-- Encabezados de la tabla -->
                                 <thead>
                                     <tr>
                                         <th>Usuario</th>
@@ -91,33 +197,61 @@
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
+                                <!-- Cuerpo de la tabla con datos de usuarios -->
                                 <tbody>
+                                    <!-- Fila de ejemplo para usuario administrador -->
                                     <tr>
+                                        <!-- Nombre de usuario -->
                                         <td>admin</td>
+                                        <!-- Tipo de usuario (rol) -->
                                         <td>Coordinador</td>
+                                        <!-- Fecha y hora del último acceso -->
                                         <td>17/11/2025 08:30</td>
+                                        <!-- Estado del usuario con clase CSS para estilo -->
                                         <td class="status-present">Activo</td>
+                                        <!-- Columna de acciones disponibles -->
                                         <td>
+                                            <!-- Botón para editar usuario -->
                                             <button class="btn btn-small">Editar</button>
+                                            <!-- Botón para resetear contraseña del usuario -->
                                             <button class="btn btn-small btn-secondary">Resetear</button>
                                         </td>
                                     </tr>
+                                    <!-- Nota: Más filas de usuarios se cargarían dinámicamente -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
+                    <!-- 
+                        =============================================
+                        PESTAÑA: RESPALDO DE DATOS
+                        =============================================
+                    -->
                     <div id="backup" class="tab-content">
+                        <!-- Título de la pestaña -->
                         <h3>Respaldo de Datos</h3>
+                        <!-- Contenedor para botones de acciones de respaldo -->
                         <div class="backup-actions">
+                            <!-- 
+                                Botón para crear nuevo respaldo
+                                onclick="createBackup()" - Función JavaScript para generar respaldo
+                            -->
                             <button class="btn" onclick="createBackup()">Crear Respaldo</button>
+                            <!-- Botón para restaurar datos desde archivo -->
                             <button class="btn btn-secondary">Restaurar desde Archivo</button>
                         </div>
+                        <!-- Sección para listar respaldos existentes -->
                         <div class="backup-list">
+                            <!-- Subtítulo para la lista de respaldos -->
                             <h4>Respaldos Recientes</h4>
+                            <!-- Lista de archivos de respaldo -->
                             <ul>
+                                <!-- Item de respaldo más reciente -->
                                 <li>respaldo_20251117.zip - 17/11/2025 08:00</li>
+                                <!-- Item de respaldo del día anterior -->
                                 <li>respaldo_20251116.zip - 16/11/2025 08:00</li>
+                                <!-- Item de respaldo de dos días antes -->
                                 <li>respaldo_20251115.zip - 15/11/2025 08:00</li>
                             </ul>
                         </div>
@@ -127,14 +261,30 @@
         </div>
     </main>
 
+    <!-- Pie de página del sistema -->
     <footer>
         <div class="container">
+            <!-- Texto de copyright y información del sistema -->
             <p>Sistema de Control de Asistencia para Profesores - ConectaTec &copy; 2025</p>
         </div>
     </footer>
 
+    <!-- 
+        Script principal de la aplicación
+        Contiene funcionalidades generales del sistema
+    -->
     <script src="js/main.js"></script>
+    
+    <!-- 
+        Script específico para el módulo de configuración
+        Contiene las funciones openTab(), createBackup() y manejo de formularios
+    -->
     <script src="js/settings.js"></script>
+    
+    <!-- 
+        Script de autenticación y manejo de sesiones
+        Incluye la función logout() para cierre de sesión
+    -->
     <script src="js/auth.js"></script>
 </body>
 </html>

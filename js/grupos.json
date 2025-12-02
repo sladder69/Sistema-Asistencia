@@ -1,0 +1,13 @@
+[
+    {
+        "identificacion": 1,
+        "materia_id": 1,
+        "profesor_id": 22,
+        "nombre_grupo": "A1",
+        "periodo": "2025-1",
+        "horario": "Lunes 9-11",
+        "aula": "B-201",
+        "cupo_maximo": 30,
+        "activo": true
+    }
+]

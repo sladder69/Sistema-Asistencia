@@ -1,64 +1,117 @@
+<!-- Declaración del tipo de documento HTML5 -->
 <!DOCTYPE html>
+<!-- Elemento raíz del documento con idioma español -->
 <html lang="es">
+
+<!-- Sección HEAD: Metadatos y configuraciones -->
 <head>
+    <!-- Codificación de caracteres UTF-8 para soportar caracteres especiales -->
     <meta charset="UTF-8">
+    <!-- Configuración viewport para responsive design en dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Avisos - ConectaTec</title>
+    <!-- Enlace a la hoja de estilos CSS principal -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
+<!-- Sección BODY: Contenido visible de la página -->
 <body>
+    <!-- Cabecera principal de la aplicación -->
     <header>
+        <!-- Contenedor para centrar el contenido -->
         <div class="container">
+            <!-- Contenido de la cabecera organizado en fila -->
             <div class="header-content">
+                
+                <!-- Logo y marca del sistema -->
                 <div class="logo">
+                    <!-- Icono representativo del sistema -->
                     <span class="logo-icon">📊</span>
+                    <!-- Nombre del sistema -->
                     <h1>ConectaTec</h1>
                 </div>
                 
-                <!-- Botón del menú hamburguesa (solo visible en móviles) -->
+                <!-- 
+                    Botón del menú hamburguesa para dispositivos móviles
+                    id="menuToggle" - Identificador para controlar apertura/cierre
+                    Solo visible en resoluciones móviles mediante CSS
+                -->
                 <button class="menu-toggle" id="menuToggle">
+                    <!-- Tres líneas que forman el ícono de hamburguesa -->
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
                 
+                <!-- Navegación principal superior (escritorio) -->
                 <nav>
+                    <!-- Lista de enlaces de navegación -->
                     <ul>
+                        <!-- Enlace hacia el dashboard -->
                         <li><a href="dashboard.html">Inicio</a></li>
+                        <!-- Enlace hacia módulo de asistencia -->
                         <li><a href="asistencia.html">Asistencia</a></li>
+                        <!-- Enlace hacia gestión de profesores -->
                         <li><a href="profesores.html">Profesores</a></li>
+                        <!-- Enlace hacia creación de materias -->
+                        <li><a href="materia.html">Materia</a></li>
+                        <!-- Enlace hacia creación de grupos -->
+                        <li><a href="grupos.html">Grupos</a></li>
+                        <!-- Enlace hacia módulo de calificaciones -->
                         <li><a href="calificaciones.html">Calificaciones</a></li>
+                        <!-- Enlace activo hacia sistema de avisos -->
                         <li><a href="avisos.html">Avisos</a></li>
                     </ul>
                 </nav>
+
+                <!-- Información del usuario y controles de sesión -->
                 <div class="user-info">
+                    <!-- Nombre del usuario actual (se actualiza dinámicamente) -->
                     <span id="userName">Coordinador</span>
+                    <!-- 
+                        Botón para cerrar sesión
+                        onclick="logout()" - Función JavaScript que maneja el cierre de sesión
+                    -->
                     <a href="index.html" class="btn btn-secondary" onclick="logout()">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
         
-        <!-- Navegación móvil -->
+        <!-- 
+            =============================================
+            NAVEGACIÓN MÓVIL (oculta por defecto)
+            =============================================
+        -->
         <div class="mobile-nav" id="mobileNav">
+            <!-- Cabecera del menú móvil -->
             <div class="mobile-nav-header">
+                <!-- Logo adaptado para móvil -->
                 <div class="logo">
                     <span class="logo-icon">📊</span>
                     <h1>Sistema de Asistencia</h1>
                 </div>
+                <!-- Botón para cerrar el menú móvil -->
                 <button class="menu-toggle active" id="closeMenu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
             </div>
+            <!-- Lista de navegación móvil -->
             <ul>
                 <li><a href="dashboard.html">Inicio</a></li>
                 <li><a href="asistencia.html">Asistencia</a></li>
                 <li><a href="profesores.html">Profesores</a></li>
+                <!-- Enlace hacia creación de materias -->
+                <li><a href="materia.html">Materia</a></li>
+                <!-- Enlace hacia creación de grupos -->
+                <li><a href="grupos.html">Grupos</a></li>
                 <li><a href="calificaciones.html">Calificaciones</a></li>
                 <li><a href="avisos.html">Avisos</a></li>
                 <li><a href="configuracion.html">Configuración</a></li>
             </ul>
+            <!-- Información del usuario en versión móvil -->
             <div class="mobile-user-info">
                 <span id="mobileUserName">Coordinador</span>
                 <a href="index.html" class="btn btn-secondary" onclick="logout()" style="margin-top: 15px;">Cerrar Sesión</a>
@@ -66,51 +119,90 @@
         </div>
     </header>
 
+    <!-- Contenido principal de la página -->
     <main class="container">
+        <!-- Contenedor principal del dashboard -->
         <div class="dashboard">
+            
+            <!-- Barra lateral de navegación (escritorio) -->
             <aside class="sidebar">
+                <!-- Título de la sección de navegación -->
                 <h2>Navegación</h2>
+                <!-- Lista de enlaces del menú lateral -->
                 <ul>
+                    <!-- Enlace al dashboard -->
                     <li><a href="dashboard.html">Dashboard</a></li>
+                    <!-- Enlace para registrar asistencia de profesores -->
                     <li><a href="asistencia.html">Registrar Asistencia</a></li>
+                    <!-- Enlace para ver lista completa de profesores -->
                     <li><a href="profesores.html">Lista de Profesores</a></li>
+                    <!-- Enlace hacia creación de materias -->
+                    <li><a href="materia.html">Materia</a></li>
+                    <!-- Enlace hacia creación de grupos -->
+                    <li><a href="grupos.html">Grupos</a></li>
+                    <!-- Enlace al módulo de calificaciones -->
                     <li><a href="calificaciones.html">Calificaciones</a></li>
+                    <!-- Enlace activo al sistema de avisos y notificaciones -->
                     <li><a href="avisos.html" class="active">Avisos</a></li>
+                    <!-- Enlace a configuración del sistema -->
                     <li><a href="configuracion.html">Configuración</a></li>
                 </ul>
             </aside>
 
+            <!-- Sección de contenido principal -->
             <section class="content">
+                <!-- Cabecera del contenido con título y botón de acción -->
                 <div class="content-header">
+                    <!-- Título principal del módulo de avisos -->
                     <h2>Gestión de Avisos</h2>
+                    <!-- 
+                        Botón para abrir modal de nuevo aviso
+                        onclick="openAddNoticeModal()" - Función JavaScript que muestra el modal
+                    -->
                     <button class="btn" onclick="openAddNoticeModal()">Nuevo Aviso</button>
                 </div>
 
+                <!-- Contenedor de tarjetas de avisos -->
                 <div class="notices-container">
+                    
+                    <!-- Tarjeta de aviso 1 -->
                     <div class="notice-card">
+                        <!-- Cabecera de la tarjeta con título y fecha -->
                         <div class="notice-header">
                             <h3>Reunión de Profesores - Noviembre</h3>
+                            <!-- Fecha de publicación del aviso -->
                             <span class="notice-date">15/11/2025</span>
                         </div>
+                        <!-- Contenido del aviso -->
                         <div class="notice-content">
                             <p>Se convoca a todos los profesores a la reunión mensual que se llevará a cabo el próximo viernes 21 de noviembre en la sala de conferencias.</p>
                         </div>
+                        <!-- Botones de acciones para el aviso -->
                         <div class="notice-actions">
+                            <!-- Botón para editar el aviso -->
                             <button class="btn btn-small">Editar</button>
+                            <!-- Botón para eliminar el aviso -->
                             <button class="btn btn-small btn-secondary">Eliminar</button>
                         </div>
                     </div>
 
+                    <!-- Tarjeta de aviso 2 -->
                     <div class="notice-card">
+                        <!-- Cabecera de la tarjeta con título y fecha -->
                         <div class="notice-header">
                             <h3>Actualización del Sistema</h3>
+                            <!-- Fecha de publicación del aviso -->
                             <span class="notice-date">10/11/2025</span>
                         </div>
+                        <!-- Contenido del aviso -->
                         <div class="notice-content">
                             <p>El próximo fin de semana se realizará una actualización del sistema. El servicio podría no estar disponible el domingo de 2:00 AM a 6:00 AM.</p>
                         </div>
+                        <!-- Botones de acciones para el aviso -->
                         <div class="notice-actions">
+                            <!-- Botón para editar el aviso -->
                             <button class="btn btn-small">Editar</button>
+                            <!-- Botón para eliminar el aviso -->
                             <button class="btn btn-small btn-secondary">Eliminar</button>
                         </div>
                     </div>
@@ -119,44 +211,83 @@
         </div>
     </main>
 
-    <!-- Modal para agregar/editar avisos -->
+    <!-- 
+        =============================================
+        MODAL PARA AGREGAR/EDITAR AVISOS
+        =============================================
+    -->
     <div id="noticeModal" class="modal">
+        <!-- Contenido del modal -->
         <div class="modal-content">
+            <!-- 
+                Botón de cierre del modal (X)
+                onclick="closeNoticeModal()" - Función para cerrar el modal
+            -->
             <span class="close" onclick="closeNoticeModal()">&times;</span>
+            <!-- Título dinámico del modal (cambia entre Nuevo/Editar) -->
             <h3 id="modalNoticeTitle">Nuevo Aviso</h3>
+            <!-- Formulario para crear/editar avisos -->
             <form id="noticeForm">
+                <!-- Grupo: Título del aviso -->
                 <div class="form-group">
                     <label for="noticeTitle">Título</label>
+                    <!-- Campo de texto para el título (obligatorio) -->
                     <input type="text" id="noticeTitle" name="noticeTitle" required>
                 </div>
+                <!-- Grupo: Contenido del aviso -->
                 <div class="form-group">
                     <label for="noticeContent">Contenido</label>
+                    <!-- Área de texto para el contenido (obligatorio) -->
                     <textarea id="noticeContent" name="noticeContent" rows="5" required></textarea>
                 </div>
+                <!-- Grupo: Prioridad del aviso -->
                 <div class="form-group">
                     <label for="noticePriority">Prioridad</label>
+                    <!-- Selector de prioridad con tres niveles -->
                     <select id="noticePriority" name="noticePriority">
                         <option value="normal">Normal</option>
                         <option value="high">Alta</option>
                         <option value="urgent">Urgente</option>
                     </select>
                 </div>
+                <!-- Botones de acción del formulario -->
                 <div class="form-actions">
+                    <!-- Botón para cancelar y cerrar el modal -->
                     <button type="button" class="btn btn-secondary" onclick="closeNoticeModal()">Cancelar</button>
+                    <!-- Botón para enviar el formulario y publicar el aviso -->
                     <button type="submit" class="btn">Publicar Aviso</button>
                 </div>
             </form>
         </div>
     </div>
 
+    <!-- Pie de página del sistema -->
     <footer>
         <div class="container">
+            <!-- Texto de copyright y información del sistema -->
             <p>Sistema de Control de Asistencia para Profesores - ConectaTec &copy; 2025</p>
         </div>
     </footer>
 
+    <!-- 
+        Script principal de la aplicación
+        Contiene funcionalidades generales del sistema
+    -->
     <script src="js/main.js"></script>
+    
+    <!-- 
+        Script específico para el módulo de avisos
+        Contiene las funciones:
+        - openAddNoticeModal() - Abre modal de nuevo aviso
+        - closeNoticeModal() - Cierra el modal
+        - Manejo del formulario de avisos
+    -->
     <script src="js/notices.js"></script>
+    
+    <!-- 
+        Script de autenticación y manejo de sesiones
+        Incluye la función logout() para cierre de sesión
+    -->
     <script src="js/auth.js"></script>
 </body>
 </html>
